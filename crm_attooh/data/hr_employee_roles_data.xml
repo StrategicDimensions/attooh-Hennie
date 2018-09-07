@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="hr_employee_role_1" model="employee.roles">
+        <field name="name">Financial Advisor</field>
+        <field name="employee_id" ref="base.user_root"></field>
+    </record>
+
+    <record id="hr_employee_role_2" model="employee.roles">
+        <field name="name">Portfolio Analyst</field>
+        <field name="employee_id" ref="base.user_root"></field>
+    </record>
+
+    <record id="hr_employee_role_3" model="employee.roles">
+        <field name="name">New Business Clerk</field>
+        <field name="employee_id" ref="base.user_root"></field>
+    </record>
+
+    <record id="hr_employee_role_4" model="employee.roles">
+        <field name="name">Servicing Clerk</field>
+        <field name="employee_id" ref="base.user_root"></field>
+    </record>
+
+    <record id="hr_employee_role_5" model="employee.roles">
+        <field name="name">Diary Clerk</field>
+        <field name="employee_id" ref="base.user_root"></field>
+    </record>
+    
+    <record id="hr_employee_role_6" model="employee.roles">
+        <field name="name">Practise Manager</field>
+        <field name="employee_id" ref="base.user_root"></field>
+    </record>
+    
+    <record id="hr_employee_role_7" model="employee.roles">
+        <field name="name">Client</field>
+        <field name="employee_id" ref="base.user_root"></field>
+    </record>
+</odoo>

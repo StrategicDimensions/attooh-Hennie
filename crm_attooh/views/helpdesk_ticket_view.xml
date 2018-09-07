@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="helpdesk_ticket_view_form_inherit" model="ir.ui.view">
+            <field name="name">helpdesk.ticket.form.inherited</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="activites_created" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="helpdesk_ticket_type_view_tree_inherit" model="ir.ui.view">
+            <field name="name">helpdesk.ticket.type.tree</field>
+            <field name="model">helpdesk.ticket.type</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_type_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="replace">
+                    <tree string="Tag">
+                        <field name="sequence" widget="handle" groups="base.group_no_one"/>
+                        <field name="name"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+        <record id="helpdesk_ticket_type_view_form" model="ir.ui.view">
+            <field name="name">helpdesk.ticket.type.form</field>
+            <field name="model">helpdesk.ticket.type</field>
+            <field name="arch" type="xml">
+                <form string="Ticket Type">
+                    <sheet>
+                        <group col="4">
+                            <field name="sequence" groups="base.group_no_one"/>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Ticket Type Activities">
+                                <field name="ticket_type_activity_ids">
+                                    <form string="Ticket Type Activity">
+                                        <sheet>
+                                            <div class="oe_button_box" name="button_box">
+                                                <button name="toggle_active" type="object" class="oe_stat_button"
+                                                        icon="fa-archive">
+                                                    <field name="active" widget="boolean_button"
+                                                           options='{"terminology": "archive"}'/>
+                                                </button>
+                                            </div>
+                                            <div class="oe_title">
+                                                <label for="name" class="oe_edit_only"/>
+                                                <h1>
+                                                    <field name="name"/>
+                                                </h1>
+                                            </div>
+                                            <group col="4">
+                                                <field name="activity_date"/>
+                                                <field name="assign_to_owner"/>
+                                                <field name="activity_type_id"/>
+                                                <field name="user_id"
+                                                       attrs="{'invisible': [('assign_to_owner', '!=', False)]}" invisible="1"/>
+                                                <field name="employee_role_id" 
+                                                       attrs="{'invisible': [('assign_to_owner', '!=', False)]}" />
+                                                <field name="ticket_type_id" invisible="1"/>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="mail_message_action_custom" model="ir.actions.act_window">
+            <field name="name">Mail Message</field>
+            <field name="res_model">mail.message</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_mail_message_custom" action="mail_message_action_custom"
+                  parent="base.menu_email"/>
+    </data>
+</odoo>

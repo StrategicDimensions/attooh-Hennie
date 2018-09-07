@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="portal_my_home_activity" name="Portal My Home: Activity entries"
+		inherit_id="portal.portal_my_home" priority="47">
+		<xpath expr="//ul[hasclass('o_portal_docs')]" position="inside">
+			<li t-if="activity_count" class="list-group-item">
+				<span class="badge" t-esc="activity_count" />
+				<a href="/my/activities">Activities</a>
+			</li>
+		</xpath>
+	</template>
+
+	<template id="portal_my_home_menu_activity_top_menu" name="Portal layout : attachment menu entries"
+		inherit_id="portal.portal_layout" priority="20">
+		<xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+			<li t-if="activities and page_name == 'activities'">
+				<t t-if="activity_count == 1">Activity</t>
+				<t t-else="activity_count > 1">Activities</t>
+			</li>
+			<li t-if="activity">
+				<a href="/my/activities">Activities</a>
+			</li>
+		</xpath>
+	</template>
+
+	<template id="portal_my_activities" name="My Activities">
+		<t t-call="portal.portal_layout">
+			<h3>
+				Activities
+				<t t-call="portal.portal_searchbar" />
+			</h3>
+			<t t-if="not activities">
+				<div class="alert alert-warning mt8" role="alert">
+					There are no
+					activities.
+				</div>
+			</t>
+			<div t-if="activities" class="panel panel-default">
+				<div class="table-responsive">
+					<table class="table table-hover o_portal_my_doc_table">
+						<thead>
+							<tr class="active">
+								<th>Name</th>
+								<th>Activity Type</th>
+								<!-- <th>Start Date</th> -->
+								<!-- <th>End Date</th> -->
+								<th>Due Date</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr t-foreach="activities" t-as="activity">
+								<td>
+									<a t-attf-href="/my/activity/#{activity.id}?{{ keep_query() }}">
+										<span t-field="activity.summary" />
+									</a>
+								</td>
+								<td>
+									<span t-field="activity.activity_type_id.name" />
+								</td>
+								<!-- <td/><td/> -->
+								<td>
+									<span t-field="activity.date_deadline" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div t-if="pager" class="o_portal_pager text-center">
+				<t t-call="portal.pager" />
+			</div>
+		</t>
+	</template>
+
+	<template id="portal_my_activity" name="My Activity">
+		<t t-call="portal.portal_layout">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-md-12">
+							<h4>
+								<t t-call='portal.record_pager' />
+								Activity -
+								<span t-field="activity.summary" />
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<form action="/mark_as_done" method="post">
+						<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+						<div class="col-md-12">
+							<div class="col-md-6" style="float: left;">
+								<t t-if="activity.activity_category != 'meeting'">
+									<input type="hidden" name="activity_id" t-att-value="activity.id" />
+									<input type="submit"
+										style="background-color: #F55555; color: white; border: 1px solid black;"
+										class="btn btn-default upload_doc_btn" id="mark_as_done_btn"
+										value="Mark as Done" />
+								</t>
+							</div>
+							<div class="col-md-6" style="float: right;">
+								<p
+									style="float: right; font-size: 15px; background-color: #60C0DC; color: white; padding: 5px; border-radius: 10px;">
+									<span t-field="activity.state" />
+								</p>
+							</div>
+						</div>
+						<div class="col-md-12 text-center" style="border-bottom: gray inset 2px;">
+							<p style="font-size: 20px; color: #F55555; font-weight: bold;">
+								<span t-field="activity.summary" />
+							</p>
+						</div>
+						<div class="col-md-12" style="margin-top: 10px;">
+							<div class="col-md-2">
+								<strong>Due Date</strong>
+							</div>
+							<div class="col-md-4">
+								<span t-field="activity.date_deadline" />
+							</div>
+							<div class="col-md-2">
+								<strong>Assigned To</strong>
+							</div>
+							<div class="col-md-4">
+								<span t-field="activity.user_id" />
+								<br />
+								<span t-esc="activity.user_id.login" />
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-2">
+								<strong>Activity Type</strong>
+							</div>
+							<div class="col-md-4">
+								<p>
+									<span t-field="activity.activity_type_id.name" />
+								</p>
+							</div>
+							<div class="col-md-6" />
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-2">
+								<strong>Description</strong>
+							</div>
+							<div class="col-md-4">
+								<span t-field="activity.note" />
+							</div>
+							<div class="col-md-6" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</t>
+	</template>
+
+	<record id="mail_activity_action_my" model="ir.actions.act_window">
+		<field name="name">Activities</field>
+		<field name="res_model">mail.activity</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<menuitem id="menu_mail_activity_my" action="mail_activity_action_my"
+		parent="base.menu_email" />
+
+
+</odoo>

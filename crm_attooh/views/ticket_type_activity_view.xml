@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <record id="ticket_type_activity_form" model="ir.ui.view">
+            <field name="name">ticket.type.activity.form</field>
+            <field name="model">ticket.type.activity</field>
+            <field name="arch" type="xml">
+                <form string="Ticket Type Activity">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group col="4">
+                            <field name="activity_date"/>
+                            <field name="assign_to_owner"/>
+                            <field name="activity_type_id"/>
+                            <field name="user_id" attrs="{'invisible': [('assign_to_owner', '!=', False)]}" invisible="1"/>
+                            <field name="employee_role_id" attrs="{'invisible': [('assign_to_owner', '!=', False)]}"/>
+                            <field name="ticket_type_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="ticket_type_activity_tree" model="ir.ui.view">
+            <field name="name">ticket.type.activity.tree</field>
+            <field name="model">ticket.type.activity</field>
+            <field name="arch" type="xml">
+                <tree string="Ticket Type Activity">
+                    <field name="name" />
+                    <field name="activity_type_id" />
+                    <field name="activity_date" />
+                    <field name="assign_to_owner" />
+                    <field name="user_id" attrs="{'invisible': [('assign_to_owner', '!=', False)]}" invisible="1"/>
+                    <field name="employee_role_id" attrs="{'invisible': [('assign_to_owner', '!=', False)]}"/>
+                    <field name="ticket_type_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="ticket_type_activity_action" model="ir.actions.act_window">
+            <field name="name">Ticket Type Activities</field>
+            <field name="res_model">ticket.type.activity</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_ticket_type_activity" name="Ticket Type Activities"
+            sequence="2" action="ticket_type_activity_action" parent="helpdesk.helpdesk_menu_config"
+            groups="base.group_no_one" />
+
+    </data>
+</odoo>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_home_meetings" name="Portal My Home: Meeting entries" inherit_id="portal.portal_my_home" priority="40">
+        <xpath expr="//ul[hasclass('o_portal_docs')]" position="inside">
+            <li t-if="meeting_count" class="list-group-item">
+                <span class="badge" t-esc="meeting_count"/>
+                <a href="/my/meetings">Meetings</a>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_meetings" name="My meetings">
+        <t t-call="portal.portal_layout">
+            <h3>Meetings
+                <t t-call="portal.portal_searchbar"/>
+            </h3>
+            <t t-if="not meetings">
+                <div class="alert alert-warning mt8" role="alert">
+                    There are no meetings.
+                </div>
+            </t>
+            <div t-if="meetings" class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover o_portal_my_doc_table">
+                        <thead>
+                            <tr class="active">
+                                <th class="col-md-6">Name</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="meetings" t-as="meeting">
+                                <td>
+                                    <a t-attf-href="/my/meeting/#{meeting.id}?{{ keep_query() }}"><span t-field="meeting.name"/></a>
+                                </td>
+                                <td><span t-field="meeting.start_datetime"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div t-if="pager" class="o_portal_pager text-center">
+                <t t-call="portal.pager"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_my_meeting" name="My meetings">
+        <t t-call="portal.portal_layout">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>
+                                <t t-call='portal.record_pager'/>
+                                Meeting -
+                                <span t-field="meeting.name"/>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class='row'>
+                        <div>
+                            Name:
+                            <span t-field="meeting.name"/>
+                        </div>
+                        <div>
+                            Date
+                            <span t-field="meeting.start_datetime"/>
+                        </div>
+                        <div>
+                            Duration
+                            <span t-field="meeting.duration"/>(hours)
+                        </div>
+                        <div>
+                            Attendees
+                            <t t-foreach="meeting.partner_ids" t-as="partner">
+                            <t t-esc="partner.name"/>,
+                            </t>
+                        </div>
+                        <div>
+                            Location
+                            <span t-field="meeting.location"/>
+                        </div>
+                        <div>
+                            description
+                            <span t-field="meeting.description"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

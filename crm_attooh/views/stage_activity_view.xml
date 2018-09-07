@@ -1,0 +1,101 @@
+<odoo>
+    <data>
+
+        <record id="stage_activity_form" model="ir.ui.view">
+            <field name="name">stage.activity.form</field>
+            <field name="model">stage.activity</field>
+            <field name="arch" type="xml">
+                <form string="Stage Activity">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                            </button>   
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" />
+                            <h1>
+                                <field name="name" />
+                            </h1>
+                        </div>
+                        <group col="4">
+                            <field name="activity_date" />
+                            <field name="assign_to_owner" />
+                            <field name="activity_type_id" />
+                            <field name="user_id" attrs="{'invisible': [('assign_to_owner', '!=', False)]}" invisible="1"/>
+                            <field name="employee_role_id" attrs="{'invisible': [('assign_to_owner', '!=', False)]}"/>
+                            <field name="team_ids" widget="many2many_tags" />
+                            <field name="crm_stage_id" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="stage_activity_tree" model="ir.ui.view">
+            <field name="name">stage.activity.tree</field>
+            <field name="model">stage.activity</field>
+            <field name="arch" type="xml">
+                <tree string="Stage Activity">
+                    <field name="name" />
+                    <field name="activity_type_id" />
+                    <field name="activity_date" />
+                    <field name="assign_to_owner" />
+                    <field name="user_id" attrs="{'invisible': [('assign_to_owner', '!=', False)]}" invisible="1"/>
+                    <field name="employee_role_id" attrs="{'invisible': [('assign_to_owner', '!=', False)]}"/>
+                    <field name="crm_stage_id" />
+                    <field name="team_ids" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="stage_activity_action" model="ir.actions.act_window">
+            <field name="name">Stage Activities</field>
+            <field name="res_model">stage.activity</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_stage_activity" name="Stage Activities"
+            sequence="0" action="stage_activity_action" parent="crm.menu_crm_config_lead"
+            groups="base.group_no_one" />
+
+        <record id="crm_stage_form_inherited" model="ir.ui.view">
+            <field name="name">crm.stage.form.inherited</field>
+            <field name="model">crm.stage</field>
+            <field name="inherit_id" ref="crm.crm_stage_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='team_id']" position="after">
+                    <field name="has_portal_access"/>
+                </xpath>
+                <xpath expr="//field[@name='team_id']" position="replace">
+                    <field name="team_ids" widget="many2many_tags" />
+                </xpath>
+                <xpath expr="//separator" position="before">
+                    <notebook>
+                        <page string="Stage Activities">
+                            <field name="stage_activity_ids"/>
+                        </page>
+                        <page string="Stage Automated Emails">
+                            <field name="stage_automated_email_ids">
+                                <tree editable="top">
+                                    <field name="email_template_id"/>
+                                    <field name="user_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Stage Signature Request">
+                            <field name="stage_signature_request_ids">
+                                <tree editable="top">
+                                    <field name="signature_request_template_id"/>
+                                    <field name="user_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

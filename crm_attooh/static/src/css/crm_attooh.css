@@ -1,0 +1,11 @@
+.o_sign_checkbox {
+    height: 50%;
+    width: 50%;
+    margin-top: 12px;
+}
+body.o_app_switcher_background{
+	
+	background-image:url(Background.jpg) !important;
+	background-repeat : no-repeat;
+	background-size : cover;
+}

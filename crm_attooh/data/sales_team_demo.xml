@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- rename for demo-data -->
+        <record model="crm.team" id="crm_team_attooh_1">
+            <field name="name">Short Term</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record model="crm.team" id="crm_team_attooh_2">
+            <field name="name">Health</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record model="crm.team" id="crm_team_attooh_3">
+            <field name="name">Investments</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record model="crm.team" id="crm_team_attooh_4">
+            <field name="name">Risk</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record model="crm.team" id="crm_team_attooh_5">
+            <field name="name">New Business</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        
+        <record model="crm.stage" id="crm_stage_attooh_1">
+            <field name="name">C2.1 Leads</field>
+            <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        </record>
+        <record model="crm.stage" id="crm_stage_attooh_2">
+            <field name="name">C2.2 Appointment Schedule</field>
+            <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        </record>
+        <record model="crm.stage" id="crm_stage_attooh_3">
+            <field name="name">C2.3 First Interview Meeting</field>
+            <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        </record>
+        <record model="crm.stage" id="crm_stage_attooh_4">
+            <field name="name">C2.4 Authorisation</field>
+            <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        </record>
+        <record model="crm.stage" id="crm_stage_attooh_5">
+            <field name="name">C2.5 FNA</field>
+            <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        </record>
+        <record model="crm.stage" id="crm_stage_attooh_6">
+            <field name="name">C2.6 ROA</field>
+            <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        </record>
+        <record model="crm.stage" id="crm_stage_attooh_7">
+            <field name="name">C2.7 Recommendations</field>
+            <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        </record>
+        <record model="crm.stage" id="crm_stage_attooh_8">
+            <field name="name">C2.8 Closing Appointment</field>
+            <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        </record>
+        <record model="crm.stage" id="crm_stage_attooh_9">
+            <field name="name">C3.1 Submissions</field>
+            <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        </record>
+        <record model="crm.stage" id="crm_stage_attooh_10">
+            <field name="name">C3.2 Underwriting / Allocation</field>
+            <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        </record>
+        <record model="crm.stage" id="crm_stage_attooh_11">
+            <field name="name">C3.3 Manage Underwriting</field>
+            <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2')])]"/>
+        </record>
+    </data>
+</odoo>

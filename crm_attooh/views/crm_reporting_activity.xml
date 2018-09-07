@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="inherit_crm_activity_report_view_search" model="ir.ui.view">
+        <field name="name">crm.activity.report</field>
+        <field name="model">crm.activity.report</field>
+        <field name="inherit_id" ref="crm.crm_activity_report_view_search"></field>
+        <field name="arch" type="xml">
+            <filter name="last_month" position="after">
+                 <separator/>
+                    <filter name="late_activities" string="Late Activities" domain="[('date', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
+                    <filter name="today_activity" string="Today Activities" domain="[('date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]"/>
+                    <filter name="future_activities" string="Future Activities" domain="[('date', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>
+                 <separator/>
+            </filter>
+            <filter name="group_by_opportunity" position="after">
+                <filter name="user_id" string=" Assigned To" context="{'group_by':'user_id'}"/>
+            </filter>
+        </field>
+    </record>
+
+</odoo>

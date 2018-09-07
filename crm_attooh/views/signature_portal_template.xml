@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<template id="portal_my_home_signature" name="Portal My Home: Signature entries"
+		inherit_id="portal.portal_my_home" priority="43">
+		<xpath expr="//ul[hasclass('o_portal_docs')]" position="inside">
+			<li t-if="signature_count" class="list-group-item">
+				<span class="badge" t-esc="signature_count" />
+				<a href="/my/signatures">Signature Requests</a>
+			</li>
+		</xpath>
+	</template>
+
+	<template id="portal_my_home_menu_signature" name="Portal layout : signature menu entries"
+		inherit_id="portal.portal_layout" priority="20">
+		<xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+			<li t-if="signatures and page_name == 'signatures'">
+				<t t-if="signature_count == 1">Signature Request</t>
+				<t t-else="signature_count > 1">Signature Requests</t>
+			</li>
+		</xpath>
+	</template>
+
+	<template id="portal_my_signatures" name="My Signatures">
+		<t t-call="portal.portal_layout">
+			<h3>
+				Signature Requests
+				<t t-call="portal.portal_searchbar" />
+			</h3>
+			<t t-if="not signatures">
+				<div class="alert alert-warning mt8" role="alert">
+					There are no Signature Requests.
+				</div>
+			</t>
+			<div t-if="signatures" class="panel panel-default">
+				<div class="table-responsive">
+					<table class="table table-hover o_portal_my_doc_table">
+						<thead>
+							<tr class="active">
+								<th class="col-md-6">Name</th>
+								<th>Status</th>
+								<th>Progress</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr t-foreach="signatures" t-as="signature">
+								<td>
+									<a t-attf-href="/sign/document/#{signature.id}/#{signature.access_token}">
+										<span t-field="signature.reference" />
+									</a>
+									<!-- <a t-attf-href="/my/signature/#{signature.id}?{{ keep_query() 
+										}}"><span t-field="signature.reference"/></a> -->
+								</td>
+								<td>
+									<span t-field="signature.state" />
+								</td>
+								<td>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped active" role="progressbar"
+											t-attf-aria-valuenow="#{signature.progress}" aria-valuemin="0" aria-valuemax="100"
+											t-attf-style="width:#{signature.progress}%">
+											<p><span t-esc="signature.progress"/>%</p>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div t-if="pager" class="o_portal_pager text-center">
+				<t t-call="portal.pager" />
+			</div>
+		</t>
+	</template>
+
+	<template id="portal_my_signature" name="My Signature">
+		<t t-call="portal.portal_layout">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-md-12">
+							<h4>
+								<t t-call='portal.record_pager' />
+								Signature Requests -
+								<span t-field="signature.reference" />
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class='row'>
+						<div>
+							Filename:
+							<span t-field="signature.reference" />
+						</div>
+						<div>
+							State
+							<span t-field="signature.state" />
+						</div>
+						<div>
+							Signers
+							<t t-foreach="signature.request_item_ids" t-as="item">
+								<t t-esc="item.partner_id.name" />
+								-
+								<t t-esc="item.state" />
+								<br />
+							</t>
+						</div>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+</odoo>

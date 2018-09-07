@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_get_credit_report" model="ir.actions.server">
+        <field name="name">Get Credit Report</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="code">
+for each in records:
+    if each.id == contect.get('ticket_id'):
+        each.get_credit_report() 
+        </field>
+    </record>
+
+</odoo>

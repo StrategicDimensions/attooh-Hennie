@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <record id="employee_role_tree_view" model="ir.ui.view">
+            <field name="name">employee.roles.tree</field>
+            <field name="model">employee.roles</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Role">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="employee_role_form" model="ir.ui.view">
+            <field name="name">employee.roles.form</field>
+            <field name="model">employee.roles</field>
+            <field name="arch" type="xml">
+                <form string="Employee Role">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="employee_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_employe_role" model="ir.actions.act_window">
+            <field name="name">Employee Roles</field>
+            <field name="res_model">employee.roles</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            action="action_employe_role"
+            id="employee_role_menu"
+            parent="hr.menu_hr_root"
+            sequence="89"/>
+    </data>
+</odoo>

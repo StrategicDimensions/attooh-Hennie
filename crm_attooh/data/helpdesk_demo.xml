@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+<!--     <delete id="helpdesk.type_question" model="helpdesk.ticket.type"/> -->
+<!--     <delete id="helpdesk.type_incident" model="helpdesk.ticket.type"/> -->
+
+    <record id="type_change_of_address" model="helpdesk.ticket.type">
+        <field name="name">Change of Address</field>
+    </record>
+    <record id="type_change_of_beneficiary" model="helpdesk.ticket.type">
+        <field name="name">Change of Beneficiary</field>
+    </record>
+    <record id="cancellation_of_policy" model="helpdesk.ticket.type">
+        <field name="name">Cancellation of Policy</field>
+    </record>
+    <record id="counter_offer_letter" model="helpdesk.ticket.type">
+        <field name="name">Counter Offer Letter</field>
+    </record>
+    <record id="claims" model="helpdesk.ticket.type">
+        <field name="name">Claims</field>
+    </record>
+    <record id="cession-colateral" model="helpdesk.ticket.type">
+        <field name="name">Cession-Colateral</field>
+    </record>
+    <record id="cession-outright" model="helpdesk.ticket.type">
+        <field name="name">Cession-Outright</field>
+    </record>
+    <record id="debit_order" model="helpdesk.ticket.type">
+        <field name="name">Debit Order</field>
+    </record>
+    <record id="early_retirement" model="helpdesk.ticket.type">
+        <field name="name">Early Retirement</field>
+    </record>
+    <record id="maturity" model="helpdesk.ticket.type">
+        <field name="name">Maturity</field>
+    </record>
+    <record id="surrender" model="helpdesk.ticket.type">
+        <field name="name">Surrender</field>
+    </record>
+    <record id="tax_certificates" model="helpdesk.ticket.type">
+        <field name="name">Tax Certificates</field>
+    </record>
+    <record id="fund_changes" model="helpdesk.ticket.type">
+        <field name="name">Fund Changes</field>
+    </record>
+    <record id="repurchase" model="helpdesk.ticket.type">
+        <field name="name">Repurchase</field>
+    </record>
+    <record id="surname_changes" model="helpdesk.ticket.type">
+        <field name="name">Surname Changes</field>
+    </record>
+    <record id="cancel_premium_increase" model="helpdesk.ticket.type">
+        <field name="name">Cancel Premium Increase</field>
+    </record>
+    <record id="paid_up" model="helpdesk.ticket.type">
+        <field name="name">Paid Up</field>
+    </record>
+    <record id="cash_withdrawal" model="helpdesk.ticket.type">
+        <field name="name">Cash Withdrawal</field>
+    </record>
+    <record id="premium_in_arrears" model="helpdesk.ticket.type">
+        <field name="name">Premium in Arrears</field>
+    </record>
+
+</odoo>

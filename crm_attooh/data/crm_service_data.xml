@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <record id="service_1" model="crm_attooh.service">
+            <field name="name">Risk Products</field>
+        </record>
+        
+        <record id="service_2" model="crm_attooh.service">
+            <field name="name">Investment Products</field>
+        </record>
+
+        <record id="service_3" model="crm_attooh.service">
+            <field name="name">Retirement Products</field>
+        </record>
+
+        <record id="service_4" model="crm_attooh.service">
+            <field name="name">Health Products</field>
+        </record>
+
+        <record id="service_5" model="crm_attooh.service">
+            <field name="name">Wills</field>
+        </record>
+
+        <record id="service_6" model="crm_attooh.service">
+            <field name="name">Trusts</field>
+        </record>
+
+        <record id="service_7" model="crm_attooh.service">
+            <field name="name">Short Term Products</field>
+        </record>
+
+        <record id="service_8" model="crm_attooh.service">
+            <field name="name">Tax</field>
+        </record>
+
+        <record id="service_9" model="crm_attooh.service">
+            <field name="name">Employee Benefits</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,118 @@
+<odoo>
+    <data>
+        <record id="entity_1" model="entity.status">
+            <field name="name">Client</field>
+        </record>
+        <record id="entity_2" model="entity.status">
+            <field name="name">Inactive</field>
+        </record>
+        <record id="entity_3" model="entity.status">
+            <field name="name">Contact</field>
+        </record>
+        <record id="entity_4" model="entity.status">
+            <field name="name">Deceased</field>
+        </record>
+        <record id="entity_5" model="entity.status">
+            <field name="name">Group Plan Members</field>
+        </record>
+        <record id="entity_5" model="entity.status">
+            <field name="name">Prospect</field>
+        </record>
+    </data>
+
+    <record id="base.model_res_partner" model="ir.model">
+        <field name="website_form_access">True</field>
+        <field name="website_form_label">Customer</field>
+    </record>
+
+    <record model="ir.actions.server" id="action_send_invitation">
+        <field name="name">Send attooh invitation email</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="state">code</field>
+        <field name="code">
+PortalWiard = env['portal.wizard']
+portal = PortalWiard.create({
+    'user_ids': [(0, 0, {
+        'partner_id': record.id,
+        'email': record.email,
+        'in_portal': True,
+        'user_id': env.user.id
+    })]
+})
+portal.action_apply()
+        </field>
+    </record>
+
+    <record model="ir.actions.server" id="action_sms_request_email">
+        <field name="name">SMS Requesting Email Address</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="state">code</field>
+        <field name="code">
+SMS = env['sms.send_sms']
+SMS.create({
+    'message': 'Send your email address'
+})
+SMS.action_send_sms()
+        </field>
+    </record>
+
+    <record model="ir.actions.server" id="action_sms_on_not_open_email">
+        <field name="name">Not Open Email Invitation</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="state">code</field>
+        <field name="code">
+SMS = env['sms.send_sms']
+SMS.create({
+    'message': 'Check your email for get attooh portal access'
+})
+SMS.action_send_sms()
+        </field>
+    </record>
+
+    <record model="ir.actions.server" id="action_sms_on_open_email">
+        <field name="name">Open Email Invitation</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="state">code</field>
+        <field name="code">
+if not record.user_id.active:
+    SMS = env['sms.send_sms']
+    SMS.create({
+        'message': 'Please complete attooh registration process. we have sent you registration email'
+    })
+    SMS.action_send_sms()
+        </field>
+    </record>
+
+    <function model="ir.model.fields" name="formbuilder_whitelist">
+        <value>res.partner</value>
+        <value eval="[
+            'name', 'phone', 'email',
+            'city', 'zip', 'street', 'street2', 'state_id', 'country_id',
+            'vat', 'company_name',
+            'surname', 'mobile',
+            'employer_name',
+            'fund_value',
+            'gross_month_salary',
+            'id_rsa',
+            'income_tax_number',
+            'maiden_name',
+            'marrige_date',
+            'marital_status',
+            'name',
+            'occupation',
+            'preferred_name',
+            'qualification',
+            'smokes_status',
+            'surname',
+            'asset_ids',
+            'medical_aid_company',
+            'medical_aid_plan',
+            'medical_aid_number',
+        ]"/>
+
+    </function>
+</odoo>

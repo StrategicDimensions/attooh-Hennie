@@ -1,0 +1,1051 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="credit_report">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Personal Details</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section displays the Personal information for the consumer. Included here is ID or Passport, Name, Gender, Marital Status.</em>
+                        </p>
+                        <div style="padding:0px">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>Reference No.</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['ReferenceNo']"/></td>
+                                        <td>
+                                            <strong>External Reference No.</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['ExternalReference']"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>ID No.</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['IDNo']"/></td>
+                                        <td>
+                                            <strong>Passport or 2nd ID No.</strong>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Surname</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['Surname']"/></td>
+                                        <td>
+                                            <strong>Residential Address</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['ResidentialAddress']"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>First Name</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['FirstName']"/></td>
+                                        <td>
+                                            <strong>Postal Address</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['PostalAddress']"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Second Name</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['SecondName']"/></td>
+                                        <td>
+                                            <strong>Telephone No. (H)</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['HomeTelephoneNo']"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Title</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['TitleDesc']"/></td>
+                                        <td>
+                                            <strong>Telephone No. (W)</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['WorkTelephoneNo']"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Gender</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['Gender']"/></td>
+                                        <td>
+                                            <strong>Cellular/Mobile</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['CellularNo']"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Date of Birth</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['BirthDate']"/></td>
+                                        <td>
+                                            <strong>E-mail Address</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['EmailAddress']"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Marital Status</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['MaritalStatusDesc']"/></td>
+                                        <td>
+                                            <strong>Current Employer</strong>
+                                        </td>
+                                        <td><t t-esc="ConsumerDetail[0]['EmployerDetail']"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Potential Fraud Indicators</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section displays information verified by Home Affairs and the SAFPS.</em>
+                        </p>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>ID No. Verified Status At Home Affairs</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerFraudIndicatorsSummary[0]['HomeAffairsVerificationYN']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>ID No. Deceased Status At Home Affairs</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerFraudIndicatorsSummary[0]['HomeAffairsDeceasedStatus']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>ID No. Found on Fraud Database</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerFraudIndicatorsSummary[0]['SAFPSListingYN']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>ID No. Found on Employer Fraud Database</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerFraudIndicatorsSummary[0]['EmployerFraudVerificationYN']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>ID No. Found on Protective Register</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerFraudIndicatorsSummary[0]['ProtectiveVerificationYN']"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Debt Summary</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section displays a summary of all the consumer’s current debt obligations, legal enforcement action taken, Court Notices, enquiries done on this consumer by credit providers and debt counselling information.</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Count</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>Active Accounts</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['NoOFActiveAccounts']"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Accounts in Good Standing</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['NoOfAccountInGoodStanding']"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Accounts In Arrears</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['NoOfAccountInBadStanding']"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Total Monthly Instalment</strong>
+                                    </td>
+                                    <td></td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['TotalMonthlyInstallment']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Total Outstanding Debt</strong>
+                                    </td>
+                                    <td></td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['TotalOutStandingDebt']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Total Arrear Amount</strong>
+                                    </td>
+                                    <td></td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['TotalOutStandingDebt']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Paid Up/Closed Accounts</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['NoOfPaidUpOrClosedAccounts']"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Highest Months in Arrears (Last 24 Months)</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['HighestMonthsInArrears']"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Court Notices [Judgements / Admin Orders / Sequestrations]</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['JudgementCount']"/></td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['TotalJudgmentAmt']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Enquiries Done in the last 90 days</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['NoOfEnquiriesLast90DaysOTH']"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Accounts opened within the last 45 days</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['NoOfAccountsOpenedinLast45Days']"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Public Domain - Adverse / Defaults</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['NoofAccountdefaults']"/></td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['TotalAdverseAmt']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>XDS Default listing</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['DefaultListingCount']"/></td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['DefaultListingAmt']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Rehabilitation Orders</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['CourtNoticeCount']"/></td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['TotalCourtNoticeAmt']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Enquiries (last 24 months)</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['NoOfEnqinLast24Months']"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Current Property Interests</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerPropertyInformationSummary[0]['TotalProperty']"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Directorships</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerDirectorSummary[0]['NumberOfCompanyDirector']"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Debt Review Status</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['DebtReviewStatus']"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Dispute Information</strong>
+                                    </td>
+                                    <td><t t-esc="ConsumerCPANLRDebtSummary[0]['DisputeMessage']"/></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Credit Account Status</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section includes 24 month payment behaviour of all credit agreements as reported by the Credit Grantors belonging to Credit Providers Association (CPA).</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date Account Opened</th>
+                                    <th>Company</th>
+                                    <th>Type of Account</th>
+                                    <th>Account No.</th>
+                                    <th>Open Balance/Credit Limit</th>
+                                    <th>Current Balance</th>
+                                    <th>Instalment Amount</th>
+                                    <th>Arrears Amount</th>
+                                    <th>Current Status of Account</th>
+                                    <th>Last Paid Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="ConsumerAccountStatus[0]" t-as="status">
+                                    <td><t t-esc="status['AccountOpenedDate']"/></td>
+                                    <td><t t-esc="status['SubscriberName']"/></td>
+                                    <td><t t-esc="status['AccountType']"/></td>
+                                    <td><t t-esc="status['AccountNo']"/></td>
+                                    <td><t t-esc="status['CreditLimitAmt']"/></td>
+                                    <td><t t-esc="status['CurrentBalanceAmt']"/></td>
+                                    <td><t t-esc="status['MonthlyInstalmentAmt']"/></td>
+                                    <td><t t-esc="status['ArrearsAmt']"/></td>
+                                    <td><t t-esc="status['StatusCodeDesc']"/></td>
+                                    <td><t t-esc="status['LastPaymentDate']"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-striped">
+                            <thead>
+                                <t t-set="header" t-value="Consumer24MonthlyPaymentHeader[0]"/>
+                                <tr>
+                                    <th>Subscriber Name</th>
+                                    <t t-set="months_header" t-value='["M01","M02","M03","M04","M05","M06","M07","M08","M09","M10","M11","M12","M13","M14","M15","M16","M17","M18","M19","M20","M21","M22","M23","M24"]'/>
+                                    <t t-foreach="months_header" t-as="hed">
+                                        <th><t t-esc="header[hed]"/></th>
+                                    </t>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="months" t-value='["SubscriberName", "M01","M02","M03","M04","M05","M06","M07","M08","M09","M10","M11","M12","M13","M14","M15","M16","M17","M18","M19","M20","M21","M22","M23","M24"]'/>
+                                <t t-foreach="ConsumerNLR24MonthlyPayment[0]" t-as="payment">
+                                    <tr>
+                                        <t t-foreach="months" t-as="month">
+                                            <td t-if="payment[month] == '#'">
+                                                <i class="fa fa-hashtag"></i>
+                                            </td>
+                                            <td t-elif="payment[month] == '0'">
+                                                <i class="fa fa-check-square"></i>
+                                            </td>
+                                            <td t-elif="payment[month] == '*'">
+                                                <i class="fa fa-redo"></i>
+                                            </td>
+                                            <td t-elif="payment[month] == 'P'">
+                                                <i class="fa fa-product-hunt"></i>
+                                            </td>
+                                            <td t-elif="payment[month] == 'G'">
+                                                <i class="fa fa-ban"></i>
+                                            </td>
+                                            <td t-else="">
+                                                <t t-esc="payment[month]"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Payment Profile: National Loan Register - NLR</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section includes 24 month payment behaviour of all credit agreements as reported by Micro Lenders as part of the National Loans Register (NLR).</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date Account Opened</th>
+                                    <th>Company</th>
+                                    <th>Account No.</th>
+                                    <th>Loan Amount</th>
+                                    <th>Current Balance</th>
+                                    <th>Installment Amount</th>
+                                    <th>Arrears Amount</th>
+                                    <th>Type of Account</th>
+                                    <th>Current Status of Account</th>
+                                    <th>Last Paid Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="ConsumerNLRAccountStatus[0]" t-as="NLRStatus">
+                                    <td><t t-esc="NLRStatus['AccountOpenedDate']"/></td>
+                                    <td><t t-esc="NLRStatus['SubscriberName']"/></td>
+                                    <td><t t-esc="NLRStatus['AccountNo']"/></td>
+                                    <td><t t-esc="NLRStatus['CreditLimitAmt']"/></td>
+                                    <td><t t-esc="NLRStatus['CurrentBalanceAmt']"/></td>
+                                    <td><t t-esc="NLRStatus['MonthlyInstalmentAmt']"/></td>
+                                    <td><t t-esc="NLRStatus['ArrearsAmt']"/></td>
+                                    <td><t t-esc="NLRStatus['AccountType']"/></td>
+                                    <td><t t-esc="NLRStatus['StatusCodeDesc']"/></td>
+                                    <td><t t-esc="NLRStatus['LastPaymentDate']"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table">
+                            <tbody>
+                                <tr t-foreach="NLRAccountTypeLegend[0]" t-as="Leg">
+                                    <td>
+                                        <t t-esc="Leg['AccountTypeCode']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="Leg['AccountTypeDesc']"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-center">
+                            Monthly Payment Behaviour at as
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%m-%d-%Y')"/>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <t t-set="header" t-value="ConsumerNLR24MonthlyPaymentHeader[0]"/>
+                                <tr>
+                                    <th>Subscriber Name</th>
+                                    <t t-set="months_header" t-value='["M01","M02","M03","M04","M05","M06","M07","M08","M09","M10","M11","M12","M13","M14","M15","M16","M17","M18","M19","M20","M21","M22","M23","M24"]'/>
+                                    <t t-if="header">
+                                        <t t-foreach="months_header" t-as="hed">
+                                            <th><t t-esc="header[hed]"/></th>
+                                        </t>
+                                    </t>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="months" t-value='["SubscriberName", "M01","M02","M03","M04","M05","M06","M07","M08","M09","M10","M11","M12","M13","M14","M15","M16","M17","M18","M19","M20","M21","M22","M23","M24"]'/>
+                                <t t-foreach="ConsumerNLR24MonthlyPayment[0]" t-as="payment">
+                                    <tr>
+                                        <t t-foreach="months" t-as="month">
+                                            <td t-if="payment[month] == '#'">
+                                                <i class="fa fa-hashtag"></i>
+                                            </td>
+                                            <td t-elif="payment[month] == '0'">
+                                                <i class="fa fa-check-square"></i>
+                                            </td>
+                                            <td t-elif="payment[month] == '*'">
+                                                <i class="fa fa-redo"></i>
+                                            </td>
+                                            <td t-elif="payment[month] == 'P'">
+                                                <i class="fa fa-product-hunt"></i>
+                                            </td>
+                                            <td t-elif="payment[month] == 'G'">
+                                                <i class="fa fa-ban"></i>
+                                            </td>
+                                            <td t-else="">
+                                                <t t-esc="payment[month]"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <table class="table">
+                            <thead>
+                                <th>
+                                    Definitions
+                                </th>
+                                <th>
+                                    Indicators
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="ConsumerNLRDefinition[0]" t-as="NLRLeg">
+                                    <td>
+                                        <t t-esc="NLRLeg['DefinitionDesc']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="NLRLeg['DefinitionCode']"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Adverse Records</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section details all Legal enforcement action taken on you by the your Credit or Service Providers</em>
+                        </p>
+                        <p class="ml8">
+                            <em>AdverseDefaults</em>
+                        </p>
+                        <table class="table">
+                            <thead>
+                                <th>Subscriber</th>
+                                <th>Account No</th>
+                                <th>Action date</th>
+                                <th>Amount</th>
+                                <th>Account Status</th>
+                                <th>Comment</th>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <p class="ml8">
+                            <em>XDS Default Listing</em>
+                        </p>
+                        <table class="table">
+                            <thead>
+                                <th>Subscriber</th>
+                                <th>Account No</th>
+                                <th>Date Listed</th>
+                                <th>Amount</th>
+                                <th>Account Status</th>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <p class="ml8">
+                            <em>Court's notice Judgements, Administration orders, Provision Sequestrations, Final Sequestrations, Prohabition Order, Debt Review Orders</em>
+                        </p>
+                        <table class="table">
+                            <thead>
+                                <th>Case No</th>
+                                <th>Issue Date</th>
+                                <th>Judgements Type</th>
+                                <th>Amount</th>
+                                <th>Plaintiff</th>
+                                <th>Court</th>
+                                <th>Attorney</th>
+                                <th>Phone No</th>
+                                <th>Comment</th>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Rehabilitation</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section details information on the Rehabilitation Order that was granted after all debts as per the Sequestration Oder were paid up.</em>
+                        </p>
+                        <table class="table">
+                            <thead>
+                                <th>Case No.</th>
+                                <th>Issue Date</th>
+                                <th>Judgement Type</th>
+                                <th>Amount</th>
+                                <th>Plaintiff</th>
+                                <th>Court</th>
+                                <th>Attorney</th>
+                                <th>Phone No</th>
+                                <th>Comment</th>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Debt Review Record</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section details information on the Rehabilitation Order that was granted after all debts as per the Sequestration Oder were paid up.</em>
+                        </p>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>Debt Review date</td>
+                                    <td></td>
+                                </tr>
+                                <td>Debt Counsellor Name</td>
+                                <td></td>
+                                <tr>
+                                    <td>Debt Counsellor Contact No</td>
+                                    <td></td>
+                                </tr>
+                                <td>Debt Review Status</td>
+                                <td></td>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>XDS Payment Notifications</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section displays information of Credit or Service Providers who require that you contact them.</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Subscriber</th>
+                                <th>Account No.</th>
+                                <th>Date Listed</th>
+                                <th>Amount</th>
+                                <th>Account Status</th>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Credit Enquiry History</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section includes a list of organisations or credit providers who have requested your Credit Report. Enquiry Date.</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Enquiry Date</th>
+                                <th>Name of Credit Grantor</th>
+                                <th>Type / Category of Credit Grantor</th>
+                            </thead>
+                            <tbody>
+                                <!-- <tr t-foreach="ConsumerEnquiryHistory[0]" t-as="enquiries">
+                                    <td><t t-esc="enquiries['EnquiryDate']"/></td>
+                                    <td><t t-esc="enquiries['SubscriberName']"/></td>
+                                    <td><t t-esc="enquiries['CreditGrantorEnquiryReasonDesc']"/></td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Contact History</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section list the last three sets of contact information provided on you by Credit or Service Providers.</em>
+                        </p>
+                        <p class="ml8">
+                            <em>Address History</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Bureau Update</th>
+                                <th>Address Type</th>
+                                <th>Address Line 1</th>
+                                <th>Address Line 2</th>
+                                <th>Address Line 3</th>
+                                <th>Address Line 4</th>
+                                <th>Postal Code</th>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="ConsumerAddressHistory[0]" t-as="history">
+                                    <td><t t-esc="history['LastUpdatedDate']"/></td>
+                                    <td><t t-esc="history['AddressType']"/></td>
+                                    <td><t t-esc="history['Address1']"/></td>
+                                    <td><t t-esc="history['Address2']"/></td>
+                                    <td><t t-esc="history['Address3']"/></td>
+                                    <td><t t-esc="history['Address4']"/></td>
+                                    <td><t t-esc="history['PostalCode']"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="ml8">
+                            <em>Contact Number History</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Bureau Update</th>
+                                <th>Telephone Type</th>
+                                <th>Telephone Code</th>
+                                <th>Telephone Number</th>
+                                <th>Email Address</th>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="ConsumerTelephoneHistory[0]" t-as="tele">
+                                    <td><t t-esc="tele['LastUpdatedDate']"/></td>
+                                    <td><t t-esc="tele['TelephoneType']"/></td>
+                                    <td><t t-esc="tele['TelCode']"/></td>
+                                    <td><t t-esc="tele['TelephoneNo']"/></td>
+                                    <td><t t-esc="tele['EmailAddress']"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <p class="ml8">
+                            <em>Email Address History</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Bureau Update</th>
+                                <th>Email Address</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="ml8">
+                            <em>Trace More - Address History</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Type</th>
+                                <th>Address</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="ml8">
+                            <em>Trace More - Telephone History</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Bureau Update</th>
+                                <th>Type</th>
+                                <th>Telephone Number</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table> -->
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Confirmed Information</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section displays a list of address, contact and employment information received from various XDS sources and has been confirmed with you at a point in time.</em>
+                        </p>
+                        <p class="ml8">
+                            <em>Confirmed Address History</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Type</th>
+                                <th>Line 1</th>
+                                <th>Line 2</th>
+                                <th>Line 3</th>
+                                <th>Line 4</th>
+                                <th>Date Confirmed</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="ml8">
+                            <em>Confirmed Contact No. History</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Land Line Number</th>
+                                <th>Date Confirmed</th>
+                                <th>Cell Number</th>
+                                <th>Date Confirmed</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="ml8">
+                            <em>Confirmed Employment History</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Employer</th>
+                                <th>Designation</th>
+                                <th>Date Confirmed</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Telephone Linkages</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section displays additional contact information, whereby XDS match that your contact numbers are linked to other individuals.</em>
+                        </p>
+                        <p class="ml8">
+                            <em>Home Linkage Information</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Name</th>
+                                <th>Surname</th>
+                                <th>Home Number</th>
+                                <th>Work Number</th>
+                                <th>Cell Number</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="ml8">
+                            <em>Work Linkage Information</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Name</th>
+                                <th>Surname</th>
+                                <th>Home Number</th>
+                                <th>Work Number</th>
+                                <th>Cell Number</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="ml8">
+                            <em>Cellular Linkage Information</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Name</th>
+                                <th>Surname</th>
+                                <th>Home Number</th>
+                                <th>Work Number</th>
+                                <th>Cell Number</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Employment History</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section displays a list of your Employers.</em>
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Bureau Update</th>
+                                <th>Employer</th>
+                                <th>Designation</th>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="ConsumerEmploymentHistory[0]" t-as="emp">
+                                    <td><t t-esc="emp['LastUpdatedDate']"/></td>
+                                    <td><t t-esc="emp['EmployerDetail']"/></td>
+                                    <td><t t-esc="emp['Designation']"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Property Interest</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section displays a list of properties registered in the name of the consumer at the Deeds offices around SA.</em>
+                        </p>
+                        <div style="padding:0px">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>Title Deed number:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <strong>Erf/Site No.:</strong>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Deeds Office:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <strong>Physical Address:</strong>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Property Type:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <strong>Extent / Size:</strong>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Purchase Date:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <strong>Purchase price:</strong>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Bond Holder:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <strong>Bond Amount:</strong>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Bond Number:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Directorship Links</strong>
+                        </div>
+                        <p class="ml8">
+                            <em>This section displays a list of companies where the Consumer is linked as a Principal at CIPC.</em>
+                        </p>
+                        <div style="padding:0px">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>Current Post:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <strong>Date of Inception:</strong>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Company Name:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <strong>Company Reg No.:</strong>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Company Address:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <strong>Company Phone No.:</strong>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Industry category:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <strong>Director Status</strong>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <report
+            id="action_credit_report"
+            string="Credit Report"
+            model="res.partner"
+            report_type="qweb-pdf"
+            file="crm_credit_report.credit_report"
+            name="crm_credit_report.credit_report"
+            multi="True"
+            print_report_name="'Credit Report - {%s} - {%s}' % (object.id_rsa or '', object.first_name or '')"/>
+
+    </data>
+</odoo>

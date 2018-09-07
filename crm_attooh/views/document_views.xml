@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_document_type_tree_attooh" model="ir.ui.view">
+        <field name="name">document.type.tree.attooh</field>
+        <field name="model">document.type</field>
+        <field name="arch" type="xml">
+            <tree string="Document Type" editable="bottom">
+                <field name="name"/>
+                <field name="available"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_document_type_attooh" model="ir.actions.act_window">
+        <field name="name">Document Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">document.type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_document_type_attooh"
+        name="Document Types"
+        parent="crm.crm_menu_config"
+        action="action_document_type_attooh"
+        sequence="9"/>
+
+    <record id="view_ir_attachment_form_inherit_attooh" model="ir.ui.view">
+        <field name="name">ir.attachment.form.inherit.attooh</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_form"/>
+        <field name="arch" type="xml">
+            <field name="type" position="after">
+                <field name="document_type"/>
+                <field name="document_available" widget="boolean_toggle"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

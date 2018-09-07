@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+         <record id="inherit_view_user_form" model="ir.ui.view">
+            <field name="name">res.users</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="is_financial_advisor"/>
+                </field>
+                <xpath expr="//page[2]" position="after">
+                    <page string="Employee Roles" attrs="{'invisible':[('is_financial_advisor','=',False)]}">
+                        <field name="user_employee_roles_ids">
+                            <tree editable="bottom">
+                                <field name="employee_role_id"/>
+                                <field name="employee_id"/>
+                                <field name="financial_advisor_id"/>
+                                <field name="user_id" invisible="1"/> 
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+         </record>
+
+    </data>
+</odoo>

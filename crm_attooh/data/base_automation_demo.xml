@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Change of Address -->
+	<record id="ticket_activity_change_of_address" model="base.automation">
+        <field name="name">Ticket Activity: Change of Address</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_pre_domain">[('stage_id.name', '=', 'New')]</field>
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Change of Address'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+<!-- Cancellation of Policy -->
+    <record id="ticket_activity_cancel_policy_update" model="base.automation">
+        <field name="name">Ticket Activity: Cancellation of Policy</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_cancel_policy=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_pre_domain">[('stage_id.name', '=', 'New')]</field>
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Cancellation of Policy'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!-- Change of Beneficiary -->
+    <record id="ticket_activity_change_of_beneficiary_update" model="base.automation">
+        <field name="name">Ticket Activity: Change of Beneficiary</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_beneficiary=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_pre_domain">[('stage_id.name', '=', 'New')]</field>
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Change of Beneficiary'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!-- Counter Offer Letter -->
+    <record id="ticket_activity_counter_offer_letter_update" model="base.automation">
+        <field name="name">Ticket Activity: Counter Offer Letter</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_counter_offer=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_pre_domain">[('stage_id.name', '=', 'New')]</field>
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Counter Offer Letter'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!-- Claims -->
+    <record id="ticket_activity_claims_update" model="base.automation">
+        <field name="name">Ticket Activity: Claims</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_claims=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_pre_domain">[('stage_id.name', '=', 'New')]</field>
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Claims'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!-- Cession-Colateral -->
+    <record id="ticket_activity_cession_colateral_update" model="base.automation">
+        <field name="name">Ticket Activity: Cession-Colateral</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_cession_colateral=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_pre_domain">[('stage_id.name', '=', 'New')]</field>
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Cession-Colateral'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!-- Cession-Outright -->
+    <record id="ticket_activity_cession_outright_update" model="base.automation">
+        <field name="name">Ticket Activity: Cession-Outright</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_cession_outright=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_pre_domain">[('stage_id.name', '=', 'New')]</field>
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Cession-Outright'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!--  Debit Order -->
+    <record id="ticket_activity_debit_order_update" model="base.automation">
+        <field name="name">Ticket Activity: Debit Order</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_debit_order=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_pre_domain">[('stage_id.name', '=', 'New')]</field>
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Debit Order'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!-- Early Retirement -->
+    <record id="ticket_activity_early_retirement_update" model="base.automation">
+        <field name="name">Ticket Activity: Early Retirement</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_early_retirement=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Early Retirement'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!-- Maturity -->
+    <record id="ticket_activity_maturity_update" model="base.automation">
+        <field name="name">Ticket Activity: Maturity</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_maturity=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Maturity'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!-- Surrender  -->
+    <record id="ticket_activity_surrender_update" model="base.automation">
+        <field name="name">Ticket Activity: Surrender</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_surrender=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Surrender'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!-- Loans   -->
+    <record id="ticket_activity_loans_update" model="base.automation">
+        <field name="name">Ticket Activity: Loans</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_loans=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Loans'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!-- Tax Certificates    -->
+    <record id="ticket_activity_tax_certificates_update" model="base.automation">
+        <field name="name">Ticket Activity: Tax Certificates</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_tax_certificates=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Tax Certificates'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!-- Fund Changes   -->
+    <record id="ticket_activity_fund_changes_update" model="base.automation">
+        <field name="name">Ticket Activity: Fund Changes</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_fund_changes=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Fund Changes'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+
+<!-- Repurchase -->
+    <record id="ticket_activity_repurchase_update" model="base.automation">
+        <field name="name">Ticket Activity: Repurchase</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="state">code</field>
+        <field name="code">
+record = model.browse(env.context['active_id'])
+record.with_context(from_update_repurchase=True).create_activity_from_ticket()
+        </field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+        <field name="filter_domain">[('ticket_type_id.name', '=', 'Repurchase'), ('stage_id.name', '=', 'In Progress'), ('activites_created', '=', False)]</field>
+    </record>
+</odoo>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+	<record id="ck2_documents" model="document.type">
+		<field name="name">CK2 Documents</field>
+		<field name="available">True</field>
+	</record>
+	<record id="proof_of_address" model="document.type">
+        <field name="name">Proof of Address</field>
+        <field name="available">True</field>
+    </record>
+    <record id="proof_of_bank" model="document.type">
+        <field name="name">Proof of Bank</field>
+        <field name="available">True</field>
+    </record>
+    <record id="resolution_letter" model="document.type">
+        <field name="name">Resolution Letter</field>
+        <field name="available">True</field>
+    </record>
+    <record id="doc_id" model="document.type">
+        <field name="name">ID</field>
+        <field name="available">True</field>
+    </record>
+    <record id="financial_statements" model="document.type">
+        <field name="name">Financial Statements</field>
+        <field name="available">True</field>
+    </record>
+    <record id="trust_deed" model="document.type">
+        <field name="name">Trust Deed</field>
+        <field name="available">True</field>
+    </record>
+    <record id="trust_loa" model="document.type">
+        <field name="name">Trust LOA</field>
+        <field name="available">True</field>
+    </record>
+    <record id="tax_number" model="document.type">
+        <field name="name">Tax Number</field>
+        <field name="available">True</field>
+    </record>
+    <record id="marriage_certificate" model="document.type">
+        <field name="name">Marriage Certificate</field>
+        <field name="available">True</field>
+    </record>
+    <record id="birth_certificate" model="document.type">
+        <field name="name">Birth Certificate</field>
+        <field name="available">True</field>
+    </record>
+    <record id="power_of_attorney" model="document.type">
+        <field name="name">Power of Attorney</field>
+        <field name="available">True</field>
+    </record>
+    <record id="other" model="document.type">
+        <field name="name">Other</field>
+        <field name="available">True</field>
+    </record>
+    
+
+</odoo>

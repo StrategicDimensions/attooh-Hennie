@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+
+		<template id="helpdesk.portal_my_home_menu_helpdesk" name="Portal layout : helpdesk tickets menu entries"
+			inherit_id="portal.portal_layout" priority="50">
+			<xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+				<li t-if="page_name == 'ticket' or ticket">
+					<a t-if="ticket" t-attf-href="/my/tickets?{{ keep_query() }}">Service Requests</a>
+					<t t-else="">Service Requests</t>
+				</li>
+				<li t-if="ticket">
+					#
+					<span t-field="ticket.id" />
+				</li>
+			</xpath>
+		</template>
+
+
+		<template id="portal_my_home_helpdesk_ticket_inherited" name="Portal My Home : Helpdesk Ticket"
+			inherit_id="helpdesk.portal_my_home_helpdesk_ticket" priority="50">
+			<xpath expr="//li[@t-if='ticket_count']" position="replace">
+				<li class="list-group-item">
+					<span class="badge" t-esc="ticket_count" />
+					<a href="/my/tickets">Service Requests</a>
+				</li>
+			</xpath>
+		</template>
+
+		<template id="portal_helpdesk_ticket_inherit" inherit_id="helpdesk.portal_helpdesk_ticket">
+			<xpath expr="//h3" position="replace">
+				<h3>
+					Service Requests
+					<t t-call="portal.portal_searchbar" />
+				</h3>
+			</xpath>
+		</template>
+		<template id="helpdesk.tickets_followup" name="Helpdesk Tickets">
+			<t t-call="portal.portal_layout">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-md-12">
+								<h4>
+									<t t-call='portal.record_pager' />
+									#
+									<span t-field="ticket.id" />
+									-
+									<span t-field="ticket.name" />
+									<a class="btn btn-info"
+										t-att-href="'/web#return_label=Website&amp;model=helpdesk.ticket&amp;id=%s&amp;view_type=form' % (ticket.id)"
+										groups="helpdesk.group_helpdesk_user">Edit Ticket</a>
+									<span t-field="ticket.stage_id.name" class="pull-right label label-info"
+										title="Current stage of this ticket" />
+								</h4>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<strong class="col-md-2">Reported on</strong>
+							<span class="col-md-4" t-field="ticket.create_date"
+								t-field-options='{"widget": "date"}' />
+							<strong class="col-md-2" t-if="ticket.team_id.portal_rating_url">Managed by</strong>
+							<span class="col-md-4" t-if="ticket.team_id.portal_rating_url">
+								<a t-att-href="'%s' % ticket.team_id.portal_rating_url">
+									<span t-field="ticket.team_id.name" />
+								</a>
+							</span>
+						</div>
+						<div class='row'>
+							<strong class="col-md-2">Reported by</strong>
+							<div class="col-md-4" t-if="ticket.partner_id">
+								<address t-field="ticket.partner_id"
+									t-field-options='{"widget": "contact", "fields": ["name", "email"], "no_marker": true}' />
+							</div>
+							<strong class="col-md-2" t-if="ticket.user_id">Assigned to</strong>
+							<div class="col-md-4">
+								<address t-field="ticket.user_id"
+									t-field-options='{"widget": "contact", "fields": ["name", "email", "phone"], "no_marker": true}' />
+							</div>
+						</div>
+						<div class="row">
+							<strong class="col-md-2">Description</strong>
+							<div class="col-md-10" t-field="ticket.description" />
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover o_portal_my_doc_table">
+							<thead>
+								<tr class="active">
+									<th>Name</th>
+									<th>Document Type</th>
+									<th>Mime Type</th>
+									<th>Date Created</th>
+									<th style="width: 12%;"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<t t-set="flag" t-value="0" />
+								<tr
+									t-foreach="request.env['ir.attachment'].sudo().search([('res_model', '=', 'helpdesk.ticket'), ('res_id', '=', ticket.id)])"
+									t-as="attachment">
+									<td>
+										<a t-attf-href="/my/attachment/#{attachment.id}?{{ keep_query() }}">
+											<p
+												style="text-overflow: ellipsis ellipsis; text-align: left; width: 250px; white-space: nowrap; overflow: hidden; cursor: pointer;"
+												t-attf-title="#{attachment.name}" t-field="attachment.name" />
+										</a>
+									</td>
+									<td>
+										<span t-field="attachment.document_type.name" />
+									</td>
+									<td>
+										<p
+											style="text-overflow: ellipsis ellipsis; text-align: right; width: 200px; white-space: nowrap; overflow: hidden; float: right; cursor: pointer;"
+											t-field="attachment.mimetype" t-attf-title="#{attachment.mimetype}" />
+									</td>
+									<td>
+										<span t-field="attachment.create_date" />
+									</td>
+									<td>
+										<a
+											t-if="attachment.mimetype not in ('image/png', 'application/pdf', 'image/jpeg')"
+											class="o_overlay_download" target="_blank"
+											t-attf-href="/web/content/#{attachment.id}?download=true">Download</a>
+										<a
+											t-if="attachment.mimetype in ('image/png', 'application/pdf', 'image/jpeg')"
+											data-toggle="modal" class="button_preview" style="cursor: pointer;">View
+											Document
+										</a>
+										<div t-attf-id="my_model" class="modal fade" role="dialog">
+											<div class="modal-header" style="border-bottom: unset;">
+												<h4 class="modal-title" style="color: white; float: left;">
+													<span t-field="attachment.name" />
+												</h4>
+												<button class="close" style="opacity: 1.0" type="button"
+													data-dismiss="modal" aria-lable="Close">
+													<span aria-hidden="true" style="color: white;">x</span>
+												</button>
+											</div>
+											<div class="modal-dialog" style="width:80%;height:80%;">
+												Modal content
+												<div class="modal-content" style="width:100%;height:100%;">
+													<div class="modal-body" style="width:100%;height:100%;padding:0px;">
+														<t t-if="attachment.mimetype == 'application/pdf'">
+															<iframe class="mb48 o_viewer_pdf"
+																t-attf-src="/web/static/lib/pdfjs/web/viewer.html?file=/web/content/#{attachment.id}"
+																style="width:100%;height:100%;" />
+														</t>
+														<t t-if="attachment.mimetype in ('image/png', 'image/jpeg')">
+															<img class="img-fluid" style="width:100%;"
+																t-attf-src="/web/image/#{attachment.id}?unique=1" />
+														</t>
+													</div>
+												</div>
+											</div>
+										</div>
+									</td>
+									<!-- <td> <a target="_blank" t-attf-href="/web/content/#{attachment.id}?download=true">D/W</a> 
+										</td> -->
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div id="upload_doc_helpdesk_id" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<!-- Modal content for download report -->
+						<div class="modal-content">
+							<form action="/upload_document_helpdesk" method="post"
+								enctype="multipart/form-data">
+								<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"></button>
+									<h4 class="modal-title" style="color: #337ab7;">Upload file here..</h4>
+								</div>
+								<div class="modal-body">
+									<div>
+										<label class="control-label" for="doc_type" style="color: #337ab7;">Document
+											Type
+										</label>
+										<select name="doc_type" id="doc_type" class="form-control"
+											style="float: right; width: 80%;" required="1">
+											<t t-if="snr_aspirants">
+												<option
+													t-att-value="attachment.document_type.id if attachment.document_type else &quot;&quot;">
+													<t
+														t-esc="attachment.document_type.name if attachment.document_type else &quot;&quot;" />
+												</option>
+											</t>
+											<option value="" />
+											<t t-foreach="request.env['document.type'].search([])"
+												t-as="doc_type" placeholder="Document Type">
+												<option t-att-value="doc_type.id">
+													<t t-esc="doc_type.name" />
+												</option>
+											</t>
+										</select>
+									</div>
+									<div style="margin-top: 20px; margin-left: 20%;">
+										<div id="dropContainer"
+											style="border: 2px dashed gray; color: gray; height:90px;padding: 6% 35%; font-size: x-large;">
+											Drop Here
+										</div>
+										<input style="margin-top: 5px; color: #337ab7;" type="file"
+											name="doc_attachment" id="doc_attachment" required="1" />
+									</div>
+								</div>
+								<div class="modal-footer">
+									<input type="hidden" t-att-id="ticket.id" name="ticket_id"
+										t-att-value="ticket.id" />
+									<input type="submit"
+										style="background-color: #1caa13cc; color: white; border: 1px solid black;"
+										class="btn btn-default upload_doc_btn" id="upload_doc_btn"
+										value="Submit" />
+									<button type="button" class="btn btn-default"
+										style="background-color: #F55555; color: white; border: 1px solid black;"
+										data-dismiss="modal">Close</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="btn" data-toggle="modal"
+					data-target="#upload_doc_helpdesk_id" style="float: right; color: green;">
+					<span>Upload Document</span>
+					<i class="fa fa-cloud-upload"></i>
+				</button>
+
+				<!-- <div t-name="mail.ChatComposer" t-attf-class="o_chat_composer #{widget.extended 
+					? 'o_chat_composer_extended' : (widget.notInline ? '' : 'o_chat_inline_composer')} 
+					#{widget.isMini ? 'o_chat_mini_composer' : ''}"> <div class="o_composer_container"> 
+					<img t-if="widget.avatarURL" height="36" width="36" class="o_thread_message_sidebar 
+					o_chatter_avatar img-circle" t-att-src="widget.avatarURL" /> <div t-if="widget.extended" 
+					class="o_composer_subject"> <input tabindex="1" type="text" placeholder="Subject" 
+					class="o_input" /> </div> <div t-attf-class="o_composer #{widget.extended 
+					? 'o_extended_composer' : ''}"> <div class="o_composer_input"> <textarea 
+					class="o_input o_composer_text_field" tabindex="2" placeholder="Write something..." 
+					/> <div class="o_chatter_composer_tools"> <button tabindex="4" class="btn 
+					btn-sm btn-icon fa fa-smile-o o_composer_button_emoji" type="button" data-toggle="popover" 
+					/> <button tabindex="5" class="btn btn-sm btn-icon fa fa-paperclip o_composer_button_add_attachment" 
+					type="button" /> <button t-if="widget.options.isMobile" tabindex="3" class="btn 
+					btn-sm btn-icon fa fa-paper-plane-o o_composer_button_send" type="button" 
+					/> </div> </div> </div> <div class="o_composer_attachments_list" /> </div> 
+					<div class="o_composer_send"> <button tabindex="3" class="btn btn-sm btn-primary 
+					o_composer_button_send hidden-xs" type="button"> <t t-esc="widget.options.send_text" 
+					/> </button> </div> <span class="hide"> <t t-call="HiddenInputFile"> <t t-set="fileupload_id" 
+					t-value="widget.fileupload_id" /> <t t-set="fileupload_action" t-translation="off">/web/binary/upload_attachment 
+					</t> <t t-set="multi_upload" t-value="true" /> <input type="hidden" name="model" 
+					value="mail.compose.message" /> <input type="hidden" name="id" value="0" 
+					/> <input type="hidden" name="session_id" t-att-value="widget.getSession().session_id" 
+					/> </t> </span> </div> -->
+
+
+				<div class="row mt32">
+					<div class="col-md-12">
+						<h4>
+							<strong>Message and communication history</strong>
+						</h4>
+					</div>
+					<div class="col-md-10 col-md-offset-1 mt16">
+						<t t-call="portal.message_thread">
+							<t t-set="object" t-value="ticket" />
+							<t t-set="disable_composer" t-value="ticket.stage_id.is_close" />
+						</t>
+					</div>
+				</div>
+			</t>
+		</template>
+	</data>
+</odoo>

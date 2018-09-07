@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<template id="portal_my_home_document" name="Portal My Home: Document entries"
+		inherit_id="portal.portal_my_home" priority="45">
+		<xpath expr="//ul[hasclass('o_portal_docs')]" position="inside">
+			<li class="list-group-item">
+				<a href="/my/attachments">Documents</a>
+				<span class="badge" t-esc="document_count or 0" />
+			</li>
+		</xpath>
+	</template>
+
+	<template id="portal_my_home_menu_document_top_menu" name="Portal layout : document menu entries"
+		inherit_id="portal.portal_layout" priority="20">
+		<xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+			<li t-if="attachments and page_name == 'attachments'">
+				<t t-if="attachment_count == 1">Document</t>
+				<t t-else="attachment_count > 1">Documents</t>
+			</li>
+			<li t-if="attachment">
+				<a href="/my/attachments">Documents</a>
+			</li>
+		</xpath>
+	</template>
+
+	<template id="portal_my_attachments" name="My Attachment">
+		<t t-call="portal.portal_layout">
+			<style>
+				.header
+				{
+				position: fixed;
+				top: 0;
+				right: 0;
+				left: 0;
+				z-index: 2;
+				height: 3em;
+				overflow: hidden;
+				padding: .5em;
+				color: #fff;
+				line-height:
+				1.2;
+				background-color: #0e5bb8;
+				border-bottom: solid 1px #ddd;
+				box-shadow: 1px 1px 10px #333;
+				}
+				.iframe
+				{
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 1;
+				width: 100%;
+				min-height: 100%;
+				padding-top: 4em;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				}
+			</style>
+			<h3>
+				Documents
+				<t t-call="portal.portal_searchbar" />
+			</h3>
+			<t t-if="not attachments">
+				<div class="alert alert-warning mt8" role="alert">
+					There is no document.
+				</div>
+			</t>
+			<div t-if="attachments" class="panel panel-default">
+				<div class="table-responsive">
+					<table class="table table-hover o_portal_my_doc_table">
+						<thead>
+							<tr class="active">
+								<th>Name</th>
+								<th>Document Type</th>
+								<th>Mime Type</th>
+								<th>Date Created</th>
+								<th style="width: 12%;"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<t t-set="flag" t-value="0" />
+							<tr t-foreach="attachments" t-as="attachment">
+								<td>
+									<a t-attf-href="/my/attachment/#{attachment.id}?{{ keep_query() }}">
+										<p
+											style="text-overflow: ellipsis ellipsis; text-align: left; width: 250px; white-space: nowrap; overflow: hidden; cursor: pointer;"
+											t-attf-title="#{attachment.name}" t-field="attachment.name" />
+									</a>
+								</td>
+								<td>
+									<span t-field="attachment.document_type.name" />
+								</td>
+								<td>
+									<p
+										style="text-overflow: ellipsis ellipsis; text-align: right; width: 200px; white-space: nowrap; overflow: hidden; float: right; cursor: pointer;"
+										t-field="attachment.mimetype" t-attf-title="#{attachment.mimetype}" />
+								</td>
+								<td>
+									<span t-field="attachment.create_date" />
+								</td>
+								<td>
+									<a
+										t-if="attachment.mimetype not in ('image/png', 'application/pdf', 'image/jpeg')"
+										class="o_overlay_download" target="_blank"
+										t-attf-href="/web/content/#{attachment.id}?download=true">Download</a>
+									<a
+										t-if="attachment.mimetype in ('image/png', 'application/pdf', 'image/jpeg')"
+										data-toggle="modal" class="button_preview" style="cursor: pointer;">View Document
+									</a>
+									<div t-attf-id="my_model" class="modal fade" role="dialog">
+										<div class="modal-header" style="border-bottom: unset;">
+											<h4 class="modal-title" style="color: white; float: left;">
+												<span t-field="attachment.name" />
+											</h4>
+											<button class="close" style="opacity: 1.0" type="button"
+												data-dismiss="modal" aria-lable="Close">
+												<span aria-hidden="true" style="color: white;">x</span>
+											</button>
+										</div>
+										<div class="modal-dialog" style="width:80%;height:80%;">
+											Modal content
+											<div class="modal-content" style="width:100%;height:100%;">
+												<div class="modal-body" style="width:100%;height:100%;padding:0px;">
+													<t t-if="attachment.mimetype == 'application/pdf'">
+														<iframe class="mb48 o_viewer_pdf"
+															t-attf-src="/web/static/lib/pdfjs/web/viewer.html?file=/web/content/#{attachment.id}"
+															style="width:100%;height:100%;" />
+													</t>
+													<t t-if="attachment.mimetype in ('image/png', 'image/jpeg')">
+														<img class="img-fluid" style="width:100%;"
+															t-attf-src="/web/image/#{attachment.id}?unique=1" />
+													</t>
+												</div>
+											</div>
+										</div>
+									</div>
+								</td>
+								<!-- <td> <a target="_blank" t-attf-href="/web/content/#{attachment.id}?download=true">D/W</a> 
+									</td> -->
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div id="download_report_id" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content for download report -->
+					<div class="modal-content">
+						<form action="/upload_document" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"></button>
+								<h4 class="modal-title" style="color: #337ab7;">Upload file here..</h4>
+							</div>
+							<div class="modal-body">
+								<div>
+									<label class="control-label" for="doc_type" style="color: #337ab7;">Document
+										Type
+									</label>
+									<select name="doc_type" id="doc_type" class="form-control"
+										style="float: right; width: 80%;" required="1">
+										<t t-if="snr_aspirants">
+											<option
+												t-att-value="attachment.document_type.id if attachment.document_type else &quot;&quot;">
+												<t
+													t-esc="attachment.document_type.name if attachment.document_type else &quot;&quot;" />
+											</option>
+										</t>
+										<option value="" />
+										<t t-foreach="request.env['document.type'].sudo().search([])"
+											t-as="doc_type" placeholder="Document Type">
+											<option t-att-value="doc_type.id">
+												<t t-esc="doc_type.name" />
+											</option>
+										</t>
+									</select>
+								</div>
+								<div style="margin-top: 20px; margin-left: 20%;">
+									<div id="dropContainer"
+										style="border: 2px dashed gray; color: gray; height:90px;padding: 6% 35%; font-size: x-large;">
+										Drop Here
+									</div>
+									<input style="margin-top: 5px; color: #337ab7;" type="file"
+										name="doc_attachment" id="doc_attachment" required="1"/>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<input type="submit"
+									style="background-color: #1caa13cc; color: white; border: 1px solid black;"
+									class="btn btn-default upload_doc_btn" id="upload_doc_btn"
+									value="Submit" />
+								<button type="button" class="btn btn-default"
+									style="background-color: #F55555; color: white; border: 1px solid black;"
+									data-dismiss="modal">Close</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<button type="button" class="btn" data-toggle="modal"
+				data-target="#download_report_id" style="float: right; color: green;">
+				<span>Upload Document</span>
+				<i class="fa fa-cloud-upload"></i>
+			</button>
+			<div t-if="pager" class="o_portal_pager text-center">
+				<t t-call="portal.pager" />
+			</div>
+		</t>
+	</template>
+
+	<template id="portal_my_attachment" name="My Documents">
+		<t t-call="portal.portal_layout">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-md-12">
+							<h4>
+								<t t-call='portal.record_pager' />
+								Document -
+								<span t-field="attachment.name" />
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class='row'>
+						<div>
+							Name:
+							<span t-field="attachment.name" />
+						</div>
+						<div>
+							Type
+							<span t-field="attachment.mimetype" />
+						</div>
+						<div>
+							<a target="_blank" t-attf-href="/web/content/#{attachment.id}?download=true">
+								<i aria-hidden="true" title="Download Document" class="fa fa-arrow-circle-o-down"></i>
+								Download
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+</odoo>

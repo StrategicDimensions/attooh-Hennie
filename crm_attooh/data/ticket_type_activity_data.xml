@@ -1,0 +1,951 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- For Ticket Type: Change of Address -->
+    <record id="ticket_type_activity_change_of_address_1" model="ticket.type.activity">
+        <field name="name">Request Client Instruction. Request copy of New Utility Bill (not older than 3 months)</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.type_change_of_address"></field>
+    </record>
+    <record id="ticket_type_activity_change_of_address_2" model="ticket.type.activity">
+        <field name="name">Record Keeping: Update details on system and copy/scan /File of written instruction and new utility bill (FAIS)</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">1</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.type_change_of_address"></field>
+    </record>
+    <record id="ticket_type_activity_change_of_address_3" model="ticket.type.activity">
+        <field name="name">Forward to Product Supplier: Client Instruction and a copy of Utility Bill </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.type_change_of_address"></field>
+    </record>
+    <record id="ticket_type_activity_change_of_address_4" model="ticket.type.activity">
+        <field name="name">Follow up with Product Supplier that the relevant changes have been made</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.type_change_of_address"></field>
+    </record>
+    <record id="ticket_type_activity_change_of_address_5" model="ticket.type.activity">
+        <field name="name">Notify Client of change of address</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.type_change_of_address"></field>
+    </record>
+
+    <!-- For Ticket Type: Cancellation of Policy -->
+    <record id="ticket_type_activity_cancellation_of_policy_1" model="ticket.type.activity">
+        <field name="name">Get a Cancellation Letter from the client </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cancellation_of_policy"></field>
+    </record>
+    <record id="ticket_type_activity_cancellation_of_policy_2" model="ticket.type.activity">
+        <field name="name">Forward the Letter to the Product Supplier &amp; Follow up</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">1</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cancellation_of_policy"></field>
+    </record>
+    <record id="ticket_type_activity_cancellation_of_policy_3" model="ticket.type.activity">
+        <field name="name">Send confirmation of cancellation to the client</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cancellation_of_policy"></field>
+    </record>
+    <record id="ticket_type_activity_cancellation_of_policy_4" model="ticket.type.activity">
+        <field name="name">Notify the Broker of the cancellation </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cancellation_of_policy"></field>
+    </record>
+    <record id="ticket_type_activity_cancellation_of_policy_5" model="ticket.type.activity">
+        <field name="name">Scan/Copy the information on system</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cancellation_of_policy"></field>
+    </record>
+    <record id="ticket_type_activity_cancellation_of_policy_5" model="ticket.type.activity">
+        <field name="name">File Activity</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cancellation_of_policy"></field>
+    </record>
+
+    <!-- For Ticket Type: Change of Beneficiary -->
+    <record id="ticket_type_activity_type_change_of_beneficiary_1" model="ticket.type.activity">
+        <field name="name">Get instruction from client &amp; capture and link asset on system </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.type_change_of_beneficiary"></field>
+    </record>
+    <record id="ticket_type_activity_type_change_of_beneficiary_2" model="ticket.type.activity">
+        <field name="name">Fill in request on relevant document and send to client to sign</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.type_change_of_beneficiary"></field>
+    </record>
+    <record id="ticket_type_activity_type_change_of_beneficiary_3" model="ticket.type.activity">
+        <field name="name">If not received from client; follow up</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.type_change_of_beneficiary"></field>
+    </record>
+    <record id="ticket_type_activity_type_change_of_beneficiary_4" model="ticket.type.activity">
+        <field name="name">Receive signed docs, file on system and send to Insurer service department</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.type_change_of_beneficiary"></field>
+    </record>
+    <record id="ticket_type_activity_type_change_of_beneficiary_5" model="ticket.type.activity">
+        <field name="name">Confirm request has been processed and inform client via email/SMS</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.type_change_of_beneficiary"></field>
+    </record>
+    <record id="ticket_type_activity_type_change_of_beneficiary_6" model="ticket.type.activity">
+        <field name="name">Change beneficiary on relevant asset on system</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.type_change_of_beneficiary"></field>
+    </record>
+    <record id="ticket_type_activity_type_change_of_beneficiary_7" model="ticket.type.activity">
+        <field name="name">File Activity</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.type_change_of_beneficiary"></field>
+    </record>
+
+    <!-- For Ticket Type: Counter Offer Letter -->
+    <record id="ticket_type_activity_counter_offer_letter_1" model="ticket.type.activity">
+        <field name="name">Receive Counter Offer Letter from Product Supplier with amended terms(loadings, exclusions etc)</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.counter_offer_letter"></field>
+    </record>
+    <record id="ticket_type_activity_counter_offer_letter_2" model="ticket.type.activity">
+        <field name="name">Notify the Advisor of the terms of the Letter</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">1</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.counter_offer_letter"></field>
+    </record>
+    <record id="ticket_type_activity_counter_offer_letter_3" model="ticket.type.activity">
+        <field name="name">Contact Client and book the appointment for the Advisor to discuss the terms and conditions of Counter Offer</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.counter_offer_letter"></field>
+    </record>
+    <record id="ticket_type_activity_counter_offer_letter_4" model="ticket.type.activity">
+        <field name="name">Appointment. Advisor to discuss with the client accept and sign</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.counter_offer_letter"></field>
+    </record>
+    <record id="ticket_type_activity_counter_offer_letter_5" model="ticket.type.activity">
+        <field name="name">Record Keeping. Copy/Scan/File of all documents pertaining to this transaction</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.counter_offer_letter"></field>
+    </record>
+    <record id="ticket_type_activity_counter_offer_letter_6" model="ticket.type.activity">
+        <field name="name">Record Keeping. Update Policy Schedule on system</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.counter_offer_letter"></field>
+    </record>
+    <record id="ticket_type_activity_counter_offer_letter_7" model="ticket.type.activity">
+        <field name="name">Forward to Product Supplier: all documentaion, signed Counter Offer Letter</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.counter_offer_letter"></field>
+    </record>
+    <record id="ticket_type_activity_counter_offer_letter_7" model="ticket.type.activity">
+        <field name="name">Follow up with the Product Supplier if the case is accepted</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">7</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.counter_offer_letter"></field>
+    </record>
+
+    <!-- For Ticket Type: Claims -->
+    <record id="ticket_type_activity_claims_1" model="ticket.type.activity">
+        <field name="name">Receive a call about the claim</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.claims"></field>
+    </record>
+    <record id="ticket_type_activity_claims_2" model="ticket.type.activity">
+        <field name="name">Capture on system as activity, link assets</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">1</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.claims"></field>
+    </record>
+    <record id="ticket_type_activity_claims_3" model="ticket.type.activity">
+        <field name="name">Notify the Broker that the claim has been received</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.claims"></field>
+    </record>
+    <record id="ticket_type_activity_claims_4" model="ticket.type.activity">
+        <field name="name">Forward Forms to the Client / Spouse </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.claims"></field>
+    </record>
+    <record id="ticket_type_activity_claims_5" model="ticket.type.activity">
+        <field name="name">All forms and policy document collected</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.claims"></field>
+    </record>
+    <record id="ticket_type_activity_claims_6" model="ticket.type.activity">
+        <field name="name">Forms checked by Administrator / Service Clerk</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.claims"></field>
+    </record>
+    <record id="ticket_type_activity_claims_7" model="ticket.type.activity">
+        <field name="name">Submit all forms and documents to Product Providers</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.claims"></field>
+    </record>
+    <record id="ticket_type_activity_claims_7" model="ticket.type.activity">
+        <field name="name">Follow up with Product Provider</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">7</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.claims"></field>
+    </record>
+    <record id="ticket_type_activity_claims_8" model="ticket.type.activity">
+        <field name="name">Notify the client that the deposit has taken place</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">8</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.claims"></field>
+    </record>
+    <record id="ticket_type_activity_claims_9" model="ticket.type.activity">
+        <field name="name">Print Letter of Confirmation and forward to client</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">9</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.claims"></field>
+    </record>
+    <record id="ticket_type_activity_claims_10" model="ticket.type.activity">
+        <field name="name">File Activity. Copy/Scan all documents on system</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">10</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.claims"></field>
+    </record>
+
+    <!-- For Ticket Type: Cession-Colateral -->
+    <record id="ticket_type_activity_cession-colateral_1" model="ticket.type.activity">
+        <field name="name">Follow up with the Product Supplier for values and forms</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">7</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-colateral"></field>
+    </record>
+    <record id="ticket_type_activity_cession-colateral_2" model="ticket.type.activity">
+        <field name="name">Contact the client to sign cession form , original policy contract, revenue stamp and other specific documents required by Product </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">10</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-colateral"></field>
+    </record>
+    <record id="ticket_type_activity_cession-colateral_3" model="ticket.type.activity">
+        <field name="name">Appointment Collect original policy document form from client, client complete and sign cession</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">11</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-colateral"></field>
+    </record>
+    <record id="ticket_type_activity_cession-colateral_4" model="ticket.type.activity">
+        <field name="name">Check the Documentation correctly completed </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">12</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-colateral"></field>
+    </record>
+    <record id="ticket_type_activity_cession-colateral_5" model="ticket.type.activity">
+        <field name="name">Record Keeping: Scan of all relevant documents and file</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">12</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-colateral"></field>
+    </record>
+    <record id="ticket_type_activity_cession-colateral_6" model="ticket.type.activity">
+        <field name="name">Forward to Product Supplier: All Cession Documents</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">12</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-colateral"></field>
+    </record>
+    <record id="ticket_type_activity_cession-colateral_7" model="ticket.type.activity">
+        <field name="name">Follow up with Product Supplier</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">12</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-colateral"></field>
+    </record>
+    <record id="ticket_type_activity_cession-colateral_7" model="ticket.type.activity">
+        <field name="name">Cession Disclosure: Cession has been recorded: name of the cession: name of the cessionary</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">13</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-colateral"></field>
+    </record>
+    <record id="ticket_type_activity_cession-colateral_8" model="ticket.type.activity">
+        <field name="name">Notify Client : Fax/email/psot letter to the client confirming the cession has been recorded: attach copy of documents and cession disclosure</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">14</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-colateral"></field>
+    </record>
+    <record id="ticket_type_activity_cession-colateral_9" model="ticket.type.activity">
+        <field name="name">Notify Advisor of registration of cession</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">15</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-colateral"></field>
+    </record>
+    <record id="ticket_type_activity_cession-colateral_10" model="ticket.type.activity">
+        <field name="name">Record Keeping: Update Policy Schedule and Planning projections, in system</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">16</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-colateral"></field>
+    </record>
+
+    <!-- For Ticket Type: Cession-Outright -->
+    <record id="ticket_type_activity_cession-outright_1" model="ticket.type.activity">
+        <field name="name">Follow up with the Product Supplier for values and forms</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-outright"></field>
+    </record>
+    <record id="ticket_type_activity_cession-outright_2" model="ticket.type.activity">
+        <field name="name">Contact to sign Cession form, original policy contract, revenue stamp and any other required documentation </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">8</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-outright"></field>
+    </record>
+    <record id="ticket_type_activity_cession-outright_3" model="ticket.type.activity">
+        <field name="name">Appointment. Collect the original policy document from client. Client must complete and sign Cession Forms </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">9</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-outright"></field>
+    </record>
+    <record id="ticket_type_activity_cession-outright_4" model="ticket.type.activity">
+        <field name="name">Check Documentation: correctly completed</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">10</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-outright"></field>
+    </record>
+    <record id="ticket_type_activity_cession-outright_5" model="ticket.type.activity">
+        <field name="name">Record Keeping: Copy, Scan all relevant documents and file (FAIS) </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">10</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-outright"></field>
+    </record>
+    <record id="ticket_type_activity_cession-outright_6" model="ticket.type.activity">
+        <field name="name">Forward to Product Supplier: All cession documentation </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">10</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-outright"></field>
+    </record>
+    <record id="ticket_type_activity_cession-outright_7" model="ticket.type.activity">
+        <field name="name">Follow up with Product Supplier</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">10</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-outright"></field>
+    </record>
+    <record id="ticket_type_activity_cession-outright_7" model="ticket.type.activity">
+        <field name="name">Cession Disclosure: On receipt of confirmation check Product Supplier has disclosed</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">11</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-outright"></field>
+    </record>
+    <record id="ticket_type_activity_cession-outright_8" model="ticket.type.activity">
+        <field name="name">Notify Client: Fax/Email/post letter to client confirming that the Cession has been registered</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">12</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-outright"></field>
+    </record>
+    <record id="ticket_type_activity_cession-outright_9" model="ticket.type.activity">
+        <field name="name">Notify Advisor: of registration of Cession. Client portfolio has changed </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">13</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-outright"></field>
+    </record>
+    <record id="ticket_type_activity_cession-outright_10" model="ticket.type.activity">
+        <field name="name">Record Keeping: Copy, Scan all relevant documents and file (FAIS) and System</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">14</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-outright"></field>
+    </record>
+    <record id="ticket_type_activity_cession-outright_11" model="ticket.type.activity">
+        <field name="name">Record Keeping: Update policy schedule, System</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">15</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.cession-outright"></field>
+    </record>
+
+
+    <!-- For Ticket Type: Debit Order -->
+    <record id="ticket_type_activity_debit_order_1" model="ticket.type.activity">
+        <field name="name">Request written instruction/debit order form : from client with proof of bank as required by Product Supplier</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.debit_order"></field>
+    </record>
+    <record id="ticket_type_activity_debit_order_2" model="ticket.type.activity">
+        <field name="name">Follow up with client to return the signed instruction/debit order form</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">1</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.debit_order"></field>
+    </record>
+    <record id="ticket_type_activity_debit_order_3" model="ticket.type.activity">
+        <field name="name">Forward to Product Supplier all documents</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.debit_order"></field>
+    </record>
+    <record id="ticket_type_activity_debit_order_4" model="ticket.type.activity">
+        <field name="name">Follow up with Product Supplier in terms of serice level agreement</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.debit_order"></field>
+    </record>
+    <record id="ticket_type_activity_debit_order_5" model="ticket.type.activity">
+        <field name="name">Forward to Client confirmation received from Product Supplier </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.debit_order"></field>
+    </record>
+    <record id="ticket_type_activity_debit_order_6" model="ticket.type.activity">
+        <field name="name">Record Keeping. Update the client information on system</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.debit_order"></field>
+    </record>
+    <record id="ticket_type_activity_debit_order_7" model="ticket.type.activity">
+        <field name="name">File Actvity: Scan/Copy of all records pertaining this transaction</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.debit_order"></field>
+    </record>
+
+    <!-- For Ticket Type:  Early Retirement -->
+    <record id="ticket_type_activity_early_retirement_1" model="ticket.type.activity">
+        <field name="name">Request the forms, values or quote from the Product Supplier</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_2" model="ticket.type.activity">
+        <field name="name">Forward the forms to the client for completion</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">1</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_3" model="ticket.type.activity">
+        <field name="name">Appointment Collect original policy document form from client</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_4" model="ticket.type.activity">
+        <field name="name">Check the Documentation correctly completed</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_5" model="ticket.type.activity">
+        <field name="name">Submit all forms and documents to Product Supplier</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_6" model="ticket.type.activity">
+        <field name="name">Follow up with Product Supplier </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_7" model="ticket.type.activity">
+        <field name="name">Notify Client: Fax/Email/post letter to client confirming that the deposit has been done </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_8" model="ticket.type.activity">
+        <field name="name">Notify the Advisor of the completion of the request</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">7</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_9" model="ticket.type.activity">
+        <field name="name">Record Keeping: Copy, Scan all relevant documents on system</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_10" model="ticket.type.activity">
+        <field name="name">File Activity </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">9</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+
+    <!-- For Ticket Type: Maturity -->
+    <record id="ticket_type_activity_maturity_1" model="ticket.type.activity">
+        <field name="name">Check Documentation Completed correctly and signed by client</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_2" model="ticket.type.activity">
+        <field name="name">Forward to Product Supplier: all maturity documentation and new investment options</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">1</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_3" model="ticket.type.activity">
+        <field name="name">Follow up with Product Supplier </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_4" model="ticket.type.activity">
+        <field name="name">Notify client that the deposit has taken place will be forwarded for onward transmission </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_5" model="ticket.type.activity">
+        <field name="name">Notify advisor that the deposit has taken place</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_6" model="ticket.type.activity">
+        <field name="name">Record Keeping, copy/scan/file maturity documentation </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_7" model="ticket.type.activity">
+        <field name="name">Record Keeping, capture details on system</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_8" model="ticket.type.activity">
+        <field name="name">Forward confirmation to Client: Confirmation of maturity letter and documentation </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">7</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_9" model="ticket.type.activity">
+        <field name="name">Review Maturity Documents from Product Supplier. Draw new file</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">8</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_10" model="ticket.type.activity">
+        <field name="name">Notify Advisor. Give File to Advisor with maturity documentation </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">9</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_11" model="ticket.type.activity">
+        <field name="name">Advisor to prepare options, reviews, client positions on system and prepare relevant options</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">10</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_12" model="ticket.type.activity">
+        <field name="name">Request Quotations.Call Prodcuct Supplier for quotes</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">11</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_13" model="ticket.type.activity">
+        <field name="name">Follow up with Product Suppliers for quotes and product details </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">12</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_14" model="ticket.type.activity">
+        <field name="name">Contact Client: Book appointment for advisor to see client 3 months Maturity due date of policy </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">13</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+    <record id="ticket_type_activity_maturity_15" model="ticket.type.activity">
+        <field name="name">Appointment: Advisor sees client. Dicloses all options, tax considerations, re-investment </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">14</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.maturity"></field>
+    </record>
+
+    <!-- For Ticket Type:  Surrender -->
+    <record id="ticket_type_activity_surrender_1" model="ticket.type.activity">
+        <field name="name">Contact the Product Supplier to get current Surrender values and forms Check with Product Supplier for their particular procedures </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.surrender"></field>
+    </record>
+    <record id="ticket_type_activity_surrender_2" model="ticket.type.activity">
+        <field name="name">Notify Advisor of Potential Surrender of Policy/Investments </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">1</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.surrender"></field>
+    </record>
+    <record id="ticket_type_activity_surrender_3" model="ticket.type.activity">
+        <field name="name">Contact the Client to discuss, sign, original contract and other specific documentation required by the Product Supplier </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.surrender"></field>
+    </record>
+    <record id="ticket_type_activity_surrender_4" model="ticket.type.activity">
+        <field name="name">Check the Documentation of correctly completed</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.surrender"></field>
+    </record>
+    <record id="ticket_type_activity_surrender_5" model="ticket.type.activity">
+        <field name="name">Forward to Product Supplier : all documents </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.surrender"></field>
+    </record>
+    <record id="ticket_type_activity_surrender_6" model="ticket.type.activity">
+        <field name="name">Notify the client as soon as the deposit has taken place: Scan, Copy, File any confirmation received from the Product Supplier </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.surrender"></field>
+    </record>
+    <record id="ticket_type_activity_surrender_7" model="ticket.type.activity">
+        <field name="name">Notify the Advisor of the completion of surrender </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.surrender"></field>
+    </record>
+    <record id="ticket_type_activity_surrender_8" model="ticket.type.activity">
+        <field name="name">Record Keeping: Update Policy Schedule, Production Book and system</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.surrender"></field>
+    </record>
+
+    <!-- For Ticket Type: Loans -->
+    <!-- <record id="ticket_type_activity_early_retirement_1" model="ticket.type.activity">
+        <field name="name">Request the forms, values or quote from the Product Supplier</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_2" model="ticket.type.activity">
+        <field name="name">Forward the forms to the client for completion</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">1</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_3" model="ticket.type.activity">
+        <field name="name">Appointment Collect original policy document form from client</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_4" model="ticket.type.activity">
+        <field name="name">Check the Documentation correctly completed</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_5" model="ticket.type.activity">
+        <field name="name">Submit all forms and documents to Product Supplier</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_6" model="ticket.type.activity">
+        <field name="name">Follow up with Product Supplier </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_7" model="ticket.type.activity">
+        <field name="name">Notify Client: Fax/Email/post letter to client confirming that the deposit has been done </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_8" model="ticket.type.activity">
+        <field name="name">Notify the Advisor of the completion of the request</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">7</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_9" model="ticket.type.activity">
+        <field name="name">Record Keeping: Copy, Scan all relevant documents on system</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record>
+    <record id="ticket_type_activity_early_retirement_10" model="ticket.type.activity">
+        <field name="name">File Activity </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">9</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.early_retirement"></field>
+    </record> -->
+
+    <!-- For Ticket Type: Tax Certificates -->
+    <record id="ticket_type_activity_tax_certificates_1" model="ticket.type.activity">
+        <field name="name">Request signed LOA from client</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.tax_certificates"></field>
+    </record>
+    <record id="ticket_type_activity_tax_certificates_2" model="ticket.type.activity">
+        <field name="name">Request information of the relevant client from the Product Supplier </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">1</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.tax_certificates"></field>
+    </record>
+    <record id="ticket_type_activity_tax_certificates_3" model="ticket.type.activity">
+        <field name="name">Follow up with the Product Supplier if information is not received </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.tax_certificates"></field>
+    </record>
+    <record id="ticket_type_activity_tax_certificates_4" model="ticket.type.activity">
+        <field name="name">Forward the information to the client </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.tax_certificates"></field>
+    </record>
+    <record id="ticket_type_activity_tax_certificates_5" model="ticket.type.activity">
+        <field name="name">File Activity: Scan/Copy information on system</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.tax_certificates"></field>
+    </record>
+
+    <!-- For Ticket Type: Fund Changes -->
+    <record id="ticket_type_activity_fund_changes_1" model="ticket.type.activity">
+        <field name="name">Notify the Advisor of the potential changes and give the advisor the file </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.fund_changes"></field>
+    </record>
+    <record id="ticket_type_activity_fund_changes_2" model="ticket.type.activity">
+        <field name="name">Contact the Client - discuss the request for switch, check mandate, client to sign if necessary </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">1</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.fund_changes"></field>
+    </record>
+    <record id="ticket_type_activity_fund_changes_3" model="ticket.type.activity">
+        <field name="name">Forward to Client all the relevant forms for client signatures if necessary</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.fund_changes"></field>
+    </record>
+    <record id="ticket_type_activity_fund_changes_4" model="ticket.type.activity">
+        <field name="name">Check Documentation: correctly completed </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.fund_changes"></field>
+    </record>
+    <record id="ticket_type_activity_fund_changes_5" model="ticket.type.activity">
+        <field name="name">Forward to Product Supplier: all documentation </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.fund_changes"></field>
+    </record>
+    <record id="ticket_type_activity_fund_changes_6" model="ticket.type.activity">
+        <field name="name">Notify Client. Fax/ Email / post letter to client confirming the switch</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.fund_changes"></field>
+    </record>
+    <record id="ticket_type_activity_fund_changes_7" model="ticket.type.activity">
+        <field name="name">Recording Keeping. Update policy schedule on system</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.fund_changes"></field>
+    </record>
+    <record id="ticket_type_activity_fund_changes_8" model="ticket.type.activity">
+        <field name="name">Recording Keeping. Copy/File/Scan of copies of all records pertaining this transactions </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">7</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.fund_changes"></field>
+    </record>
+
+    <!-- For Ticket Type: Repurchase -->
+    <record id="ticket_type_activity_repurchase_1" model="ticket.type.activity">
+        <field name="name">Contact the Prooduct Supllier and get the relevant repurchase forms</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.repurchase"></field>
+    </record>
+    <record id="ticket_type_activity_repurchase_2" model="ticket.type.activity">
+        <field name="name">Notify Advisor regarding the repurchase request </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">1</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.repurchase"></field>
+    </record>
+    <record id="ticket_type_activity_repurchase_3" model="ticket.type.activity">
+        <field name="name">Contact the Client to discuss, sign, original contract and other specific documentation required by the Product Supplier </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.repurchase"></field>
+    </record>
+    <record id="ticket_type_activity_repurchase_4" model="ticket.type.activity">
+        <field name="name">Check the Documentation of correctly completed</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">3</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.repurchase"></field>
+    </record>
+    <record id="ticket_type_activity_repurchase_5" model="ticket.type.activity">
+        <field name="name">Forward to Product Supplier : all documents </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.repurchase"></field>
+    </record>
+    <record id="ticket_type_activity_repurchase_6" model="ticket.type.activity">
+        <field name="name">Notify the client as soon as the deposit has taken place: Scan, Copy, File any confrimation received from the Product Supplier </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">5</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.repurchase"></field>
+    </record>
+    <record id="ticket_type_activity_repurchase_7" model="ticket.type.activity">
+        <field name="name">Notify the Advisor of the completion of the repurchase </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.repurchase"></field>
+    </record>
+    <record id="ticket_type_activity_repurchase_8" model="ticket.type.activity">
+        <field name="name">Record Keeping: File Activity </field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">7</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="ticket_type_id" ref="crm_attooh.repurchase"></field>
+    </record>
+</odoo>

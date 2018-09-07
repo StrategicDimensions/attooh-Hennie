@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="portal_my_home_finacial" name="Portal My Home: Personal and Financial Detail" inherit_id="portal.portal_my_home" priority="10">
+            <xpath expr="//ul[hasclass('o_portal_docs')]" position="inside">
+                <li class="list-group-item">
+                    <a href="/my/personalfinancial">Personal and Financial Detail</a>
+                </li>
+            </xpath>
+        </template>
+
+        <template id="personalfinancial_detail" name="Personal and Financial Detail">
+            <t t-call="portal.portal_layout">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>
+                                    Personal and Financial Detail
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <!-- readonly personal info -->
+                        <div class="panel panel-default" t-if="edit_mode != 'personal'">
+                            <div class="panel-heading">Personal Information</div>
+                            <div class="container  mt16 mb16">
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <strong>
+                                            <span>Name &amp; Sumrname:</span>
+                                        </strong>
+                                        <span><t t-esc="partner.name"/>
+                                            <span></span><t t-esc="partner.surname"/>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>
+                                            <span>Date:
+                                            </span>
+                                        </strong>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <strong>
+                                            <span>Email Address:
+                                            </span>
+                                        </strong>
+                                        <span><t t-esc="partner.email"/></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>
+                                            <span>Mobile No:
+                                            </span>
+                                        </strong>
+                                        <span><t t-esc="partner.mobile"/></span>
+                                    </div>
+                                </div>
+                                <div class="mt64 ml32">
+                                    <a href="/my/personalfinancial?edit_mode=personal" class="btn btn-primary">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Edit personal mode -->
+                        <div class="panel panel-default" t-if="edit_mode == 'personal'">
+                            <div class="panel-heading">Personal Information</div>
+                            <div class="container  mt16 mb16">
+                                <form action="/website_form/" method="post" data-force_action="personal_info" class="s_website_attooh_form form-horizontal container-fluid mt32" data-editable-form="true" data-success_page="/my/personalfinancial">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <label class="control-label" for="partner_name">Name &amp; Sumrname:</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="name" t-att-value="partner.name" placeholder="Name"/>
+                                                <span class="input-group-addon">-</span>
+                                                <input type="text" class="form-control" name="surname" t-att-value="partner.surname" placeholder="Surname"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label">Date</label>
+                                            <input class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <label class="control-label" for="partner_email">Email Address:</label>
+                                            <input class="form-control" for="email" placeholder="Email" t-att-value="partner.email"></input>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label" for="partner_mobile">Mobile No:</label>
+                                            <input class="form-control" required="required" name="mobile" placeholder="Mobile No" t-att-value="partner.mobile"></input>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mt16 ml8">
+                                            <button href="/my/personalfinancial" class="btn btn-primary o_website_form_send">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default" t-if="edit_mode != 'assets'">
+                            <div class="panel-heading">Assets</div>
+                            <div class="container  mt16 mb16">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Description</th>
+                                            <th>Current Market Value</th>
+                                            <th>Original Purchase Price</th>
+                                            <th>Additional Inprovement</th>
+                                            <th>Income Received</th>
+                                            <th>Date of Purchase</th>
+                                            <th>Owner/s</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="partner.asset_ids" t-as="asset">
+                                            <tr>
+                                                <td><span t-field="asset.description"/></td>
+                                                <td><span t-field="asset.current_market_value"/></td>
+                                                <td><span t-field="asset.original_purchase_price"/></td>
+                                                <td><span t-field="asset.additional_improvements"/></td>
+                                                <td><span t-field="asset.income_received"/></td>
+                                                <td><span t-field="asset.date_of_purchase"/></td>
+                                                <td><span t-field="asset.owner"/></td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mb16 ml32">
+                                <a href="/my/personalfinancial?edit_mode=assets" class="btn btn-primary">Edit</a>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default" t-if="edit_mode == 'assets'">
+                            <form action="/website_form/" method="post" data-force_action="assets" class="s_website_attooh_form form-horizontal container-fluid mt32" data-editable-form="true" data-success_page="/my/personalfinancial">
+                                <div class="panel-heading">Assets</div>
+                                <div class="container  mt16">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                                <th>Current Market Value</th>
+                                                <th>Original Purchase Price</th>
+                                                <th>Additional Inprovement</th>
+                                                <th>Income Received</th>
+                                                <th>Date of Purchase</th>
+                                                <th>Owner/s</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="o_hidden clone_tr">
+                                                <input name="id" type="hidden" class="form-control" value="0"/>
+                                                <td>
+                                                    <input name="description" class="form-control"/>
+                                                </td>
+                                                <td>
+                                                    <input name="current_market_value" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places" class="form-control"/>
+                                                </td>
+                                                <td>
+                                                    <input name="original_purchase_price" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"  class="form-control"/>
+                                                </td>
+                                                <td>
+                                                    <input name="additional_improvements" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"  class="form-control"/>
+                                                </td>
+                                                <td>
+                                                    <input name="income_received" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"  class="form-control"/>
+                                                </td>
+                                                <td>
+                                                    <div class='col-md-12'>
+                                                        <input name="date_of_purchase" type="text" class="form-control o_website_form_date"/>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <input name="owner" class="form-control"/>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="delete" data-id="0">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <t t-foreach="partner.asset_ids" t-as="asset">
+                                                <tr>
+                                                    <input name="id" type="hidden" disable="false" class="form-control" t-att-value="asset.id"/>
+                                                    <td>
+                                                        <input name="description" class="form-control" t-att-value="asset.description"/>
+                                                    </td>
+                                                    <td>
+                                                        <input name="current_market_value" required="required" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places" class="form-control" t-att-value="asset.current_market_value"/>
+                                                    </td>
+                                                    <td>
+                                                        <input name="original_purchase_price" required="required" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places" class="form-control" t-att-value="asset.original_purchase_price"/>
+                                                    </td>
+                                                    <td>
+                                                        <input name="additional_improvements" required="required" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places" class="form-control" t-att-value="asset.additional_improvements"/>
+                                                    </td>
+                                                    <td>
+                                                        <input name="income_received" required="required" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places" class="form-control" t-att-value="asset.income_received"/>
+                                                    </td>
+                                                    <td>
+                                                        <div class='col-md-12'>
+                                                            <input name="date_of_purchase" type="text" class="form-control o_website_form_date" t-att-value="asset.date_of_purchase"/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input name="owner" class="form-control" t-att-value="asset.owner"/>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="delete" t-att-data-id="asset.id">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mb16 ml8">
+                                    <button href="/my/personalfinancial" class="btn btn-primary o_website_form_send">Save</button>
+                                    <button href="#"  class="btn btn-primary add_line">Add</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="panel panel-default" t-if="edit_mode == 'liabilities'">
+                            <form action="/website_form/" method="post" data-force_action="liabilities" class="s_website_attooh_form form-horizontal container-fluid mt32" data-editable-form="true" data-success_page="/my/personalfinancial">
+                                <div class="panel-heading">Liabilities:</div>
+                                <div class="container  mt16 mb16">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                                <th>Original Debt Amount</th>
+                                                <th>Current Outstanding Amount</th>
+                                                <th>Interest Rate</th>
+                                                <th>Monthly Installment</th>
+                                                <th>Date of debt incurred</th>
+                                                <th>Owner/s</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="o_hidden clone_tr">
+                                                <input name="id" type="hidden" class="form-control" value="0"/>
+                                                <td><input class="form-control" name="creditor_name"/></td>
+                                                <td><input class="form-control" name="credit_limit_amt" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"/></td>
+                                                <td><input class="form-control" name="outstanding_total" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"/></td>
+                                                <td><input class="form-control" name="interest_rate" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"/></td>
+                                                <td><input class="form-control" name="monthly_commitment" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"/></td>
+                                                <td>
+                                                    <div class='col-md-12'>
+                                                        <input name="account_date" type="text" class="form-control o_website_form_date"/>
+                                                    </div>
+                                                </td>
+                                                <td><input class="form-control" name="internal_notes"/></td>
+                                                <td>
+                                                    <a href="#" class="delete" data-id="0">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <t t-foreach="partner.debt_obligation_ids" t-as="debt">
+                                                <tr>
+                                                    <input name="id" type="hidden" disable="false" class="form-control" t-att-value="debt.id"/>
+                                                    <td>
+                                                        <input class="form-control" name="creditor_name" t-att-value="debt.creditor_name" />
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" name="credit_limit_amt" t-att-value="debt.credit_limit_amt" required="required" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places" />
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" name="outstanding_total" t-att-value="debt.outstanding_total" required="required" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places" />
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" name="interest_rate" t-att-value="debt.interest_rate" required="required" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places" />
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" name="monthly_commitment" t-att-value="debt.monthly_commitment" required="required" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places" />
+                                                    </td>
+                                                    <td>
+                                                        <div class='col-md-12'>
+                                                            <input name="account_date" type="text" class="form-control o_website_form_date" t-att-value="debt.account_date"/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" name="internal_notes" t-att-value="debt.internal_notes"/>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="delete" t-att-data-id="debt.id">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mb16 ml8">
+                                    <button href="/my/personalfinancial" class="btn btn-primary o_website_form_send">Save</button>
+                                    <button href="#" class="btn btn-primary add_line">Add</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="panel panel-default" t-if="edit_mode != 'liabilities'">
+                            <div class="panel-heading">Liabilities:</div>
+                            <div class="container  mt16 mb16">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Description</th>
+                                            <th>Original Debt Amount</th>
+                                            <th>Current Outstanding Amount</th>
+                                            <th>Interest Rate</th>
+                                            <th>Monthly Installment</th>
+                                            <th>Date of debt incurred</th>
+                                            <th>Owner/s</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="partner.debt_obligation_ids" t-as="debt">
+                                            <tr>
+                                                <td><span t-field="debt.creditor_name"/></td>
+                                                <td><span t-field="debt.credit_limit_amt"/></td>
+                                                <td><span t-field="debt.outstanding_total"/></td>
+                                                <td><span t-field="debt.interest_rate"/></td>
+                                                <td><span t-field="debt.monthly_commitment"/></td>
+                                                <td><span t-field="debt.account_date"/></td>
+                                                <td><span t-field="debt.internal_notes"/></td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mb16 ml32">
+                                <a href="/my/personalfinancial?edit_mode=liabilities" class="btn btn-primary">Edit</a>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default" t-if="edit_mode == 'personal_detail'">
+                            <form action="/website_form/" method="post" data-force_action="personal_detail" class="s_website_attooh_form form-horizontal container-fluid mt32" data-editable-form="true" data-success_page="/my/personalfinancial">
+                                <div class="panel-heading">Personal Details:</div>
+                                <div class="container">
+                                    <table class="table">
+                                        <colgroup>
+                                            <col style="background: whitesmoke;"/>
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>Detail</th>
+                                                <th>Primary Client</th>
+                                                <th>Spouse</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Full Name</td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" name="name" t-att-value="partner.name" placeholder="Name"/>
+                                                        <span class="input-group-addon">-</span>
+                                                        <input type="text" class="form-control" name="surname" t-att-value="partner.surname" placeholder="Surname"/>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" name="spouse_name" t-att-value="spouse.name" placeholder="Name"/>
+                                                        <span class="input-group-addon">-</span>
+                                                        <input type="text" class="form-control" name="spouse_surname" t-att-value="spouse.surname" placeholder="Surname"/>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Maiden Name</td>
+                                                <td><input class="form-control" name="maiden_name" t-att-value="partner.maiden_name"/></td>
+                                                <td><input class="form-control" name="spouse_maiden_name" t-att-value="spouse.maiden_name"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Known as</td>
+                                                <td><input class="form-control" name="preferred_name" t-att-value="partner.preferred_name"/></td>
+                                                <td><input class="form-control" name="spouse_preferred_name" t-att-value="spouse.preferred_name"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Identity Number</td>
+                                                <td><input class="form-control" required="required" pattern="\d*"  title="This must be a number"  name="id_rsa" t-att-value="partner.id_rsa"/></td>
+                                                <td><input class="form-control" pattern="\d*"  title="This must be a number"  name="spouse_id_rsa" t-att-value="spouse.id_rsa"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Marital Status</td>
+                                                <td>
+                                                    <select name="marital_status" class="form-control">
+                                                        <t t-foreach="partner._fields['marital_status'].selection or []" t-as="type">
+                                                            <option t-att-value="type[0]" t-att-selected="partner.marital_status == type[0]">
+                                                                <t t-esc="type[1]"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select name="spouse_marital_status" class="form-control">
+                                                        <t t-foreach="partner._fields['marital_status'].selection or []" t-as="type">
+                                                            <option t-att-value="type[0]" t-att-selected="spouse.marital_status == type[0]">
+                                                                <t t-esc="type[1]"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Date of Marriage</td>
+                                                <td>
+                                                    <div class='col-md-12'>
+                                                        <input type="text" class="form-control o_website_form_date" t-att-value="partner.marrige_date" name="marrige_date"/>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class='col-md-12'>
+                                                        <input type="text" class="form-control o_website_form_date" t-att-value="spouse.marrige_date" name="spouse_marrige_date"/>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Qualification</td>
+                                                <td>
+                                                    <select name="qualification" class="form-control">
+                                                        <t t-foreach="partner._fields['qualification'].selection or []" t-as="type">
+                                                            <option t-att-value="type[0]" t-att-selected="partner.qualification == type[0]">
+                                                                <t t-esc="type[1]"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select name="spouse_qualification" class="form-control">
+                                                        <t t-foreach="partner._fields['qualification'].selection or []" t-as="type">
+                                                            <option t-att-value="type[0]" t-att-selected="spouse.qualification == type[0]">
+                                                                <t t-esc="type[1]"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Employer</td>
+                                                <td><input class="form-control" name="employer_name" t-att-value="partner.employer_name"/></td>
+                                                <td><input class="form-control" name="spouse_employer_name" t-att-value="spouse.employer_name"/></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Address</td>
+                                                <td>
+                                                    <input class="form-control" name="street"  placeholder="Street..." t-att-value="partner.street"/>
+                                                    <input class="form-control" name="street2" placeholder="Street 2..." t-att-value="partner.street2"/>
+                                                    <input class="form-control" name="city" placeholder="City"  t-att-value="partner.city"/>
+                                                    <input class="form-control" name="zip" placeholder="ZIP" t-att-value="partner.zip"/>
+                                                    <!-- <span t-field="partner.state_id"/>
+                                                    <span t-field="partner.country_id"/> -->
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" name="spouse_street" placeholder="Street..." t-att-value="spouse.street"/>
+                                                    <input class="form-control" name="spouse_street2" placeholder="Street 2..." t-att-value="spouse.street2"/>
+                                                    <input class="form-control" name="spouse_city" placeholder="City" t-att-value="spouse.city"/>
+                                                    <input class="form-control" name="spouse_zip" placeholder="ZIP" t-att-value="spouse.zip"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Occupation</td>
+                                                <td><input class="form-control" name="occupation" t-att-value="partner.occupation"/></td>
+                                                <td><input class="form-control" name="spouse_occupation" t-att-value="spouse.occupation"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tax Number</td>
+                                                <td><input class="form-control" name="income_tax_number" t-att-value="partner.income_tax_number"/></td>
+                                                <td><input class="form-control" name="spouse_income_tax_number" t-att-value="spouse.income_tax_number"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Madical Aid: Company</td>
+                                                <td><input class="form-control" name="medical_aid_company" t-att-value="partner.medical_aid_company"/></td>
+                                                <td><input class="form-control" name="spouse_medical_aid_company" t-att-value="spouse.medical_aid_company"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Madical Aid: Plan</td>
+                                                <td><input class="form-control" name="medical_aid_plan" t-att-value="partner.medical_aid_plan"/></td>
+                                                <td><input class="form-control" name="spouse_medical_aid_plan" t-att-value="spouse.medical_aid_plan"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Madical Aid: Number</td>
+                                                <td><input class="form-control" name="medical_aid_number" t-att-value="partner.medical_aid_number"/></td>
+                                                <td><input class="form-control" name="spouse_medical_aid_number" t-att-value="spouse.medical_aid_number"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Gross Monthly Salary</td>
+                                                <td><input class="form-control" name="gross_month_salary" t-att-value="partner.gross_month_salary" required="required" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"/></td>
+                                                <td><input class="form-control" name="spouse_gross_month_salary" t-att-value="spouse.gross_month_salary" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Gross Retierment Fund</td>
+                                                <td><input type="checkbox" class="form-control" t-att-checked="'checked' if partner.gross_retirement_fund else None" name="gross_retirement_fund" t-att-value="partner.gross_retirement_fund"/></td>
+                                                <td><input type="checkbox" class="form-control" t-att-checked="'checked' if spouse.gross_retirement_fund else None" name="spouse_gross_retirement_fund" t-att-value="spouse.gross_retirement_fund"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Fund Value</td>
+                                                <td><input class="form-control" name="fund_value" t-att-value="partner.fund_value" required="required" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"/></td>
+                                                <td><input class="form-control" name="spouse_fund_value" t-att-value="spouse.fund_value" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Smoker Status</td>
+                                                <td>
+                                                    <input type="radio" name="smokes_status" value="yes" t-att-checked="partner.smokes_status == 'yes'">YES</input>
+                                                    <input type="radio" name="smokes_status" value="no" t-att-checked="partner.smokes_status == 'no'">
+                                                        No</input>
+                                                </td>
+                                                <td>
+                                                    <input type="radio" name="spouse_smokes_status" value="yes" t-att-checked="spouse.smokes_status == 'yes'">YES</input>
+                                                    <input type="radio" name="spouse_smokes_status" value="no" t-att-checked="spouse.smokes_status == 'no'">
+                                                        No</input>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="mt16 ml8">
+                                        <button href="/my/personalfinancial" class="btn btn-primary o_website_form_send">Save</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <div class="panel panel-default" t-if="edit_mode != 'personal_detail'">
+                            <div class="panel-heading">Personal Details:</div>
+                            <div class="container">
+                                <table class="table">
+                                    <colgroup>
+                                        <col style="background: whitesmoke;"/>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>Detail</th>
+                                            <th>Primary Client</th>
+                                            <th>Spouse</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Full Name</td>
+                                            <td>
+                                                <t t-esc="partner.name"/>
+                                                <span></span><t t-esc="partner.surname"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="spouse.name"/>
+                                                <span></span><t t-esc="spouse.surname"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Maiden Name</td>
+                                            <td><span t-field="partner.maiden_name"/></td>
+                                            <td><span t-field="spouse.maiden_name"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Known as</td>
+                                            <td><span t-field="partner.preferred_name"/></td>
+                                            <td><span t-field="spouse.preferred_name"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Identity Number</td>
+                                            <td><span t-field="partner.id_rsa"/></td>
+                                            <td><span t-field="spouse.id_rsa"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Marital Status</td>
+                                            <td><span t-field="partner.marital_status"/></td>
+                                            <td><span t-field="spouse.marital_status"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Date of Marriage</td>
+                                            <td><span t-field="partner.marrige_date"/></td>
+                                            <td><span t-field="spouse.marrige_date"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Qualification</td>
+                                            <td><span t-field="partner.qualification"/></td>
+                                            <td><span t-field="spouse.qualification"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Employer</td>
+                                            <td><span t-field="partner.employer_name"/></td>
+                                            <td><span t-field="spouse.employer_name"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address</td>
+                                            <td>
+                                                <span t-field="partner.street"/>
+                                                <span t-field="partner.street2"/>
+                                                <span t-field="partner.city"/>
+                                                <span t-field="partner.state_id"/>
+                                                <span t-field="partner.zip"/>
+                                                <span t-field="partner.country_id"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="spouse.street"/>
+                                                <span t-field="spouse.street2"/>
+                                                <span t-field="spouse.city"/>
+                                                <span t-field="spouse.state_id"/>
+                                                <span t-field="spouse.zip"/>
+                                                <span t-field="spouse.country_id"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Occupation</td>
+                                            <td><span t-field="partner.occupation"/></td>
+                                            <td><span t-field="spouse.occupation"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tax Number</td>
+                                            <td><span t-field="partner.income_tax_number"/></td>
+                                            <td><span t-field="spouse.income_tax_number"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Madical Aid: Company</td>
+                                            <td><span t-field="partner.medical_aid_company"/></td>
+                                            <td><span t-field="spouse.medical_aid_company"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Madical Aid: Plan</td>
+                                            <td><span t-field="partner.medical_aid_plan"/></td>
+                                            <td><span t-field="spouse.medical_aid_plan"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Madical Aid: Number</td>
+                                            <td><span t-field="partner.medical_aid_number"/></td>
+                                            <td><span t-field="spouse.medical_aid_number"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gross Monthly Salary</td>
+                                            <td><span t-field="partner.gross_month_salary"/></td>
+                                            <td><span t-field="spouse.gross_month_salary"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gross Retierment Fund</td>
+                                            <td>
+                                                <input type="checkbox" disabled="disabled" t-att-checked="'checked' if partner.gross_retirement_fund else None"/>
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" disabled="disabled" t-att-checked="'checked' if spouse.gross_retirement_fund else None"/>
+                                            </td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <td>Fund Value</td>
+                                            <td><span t-field="partner.fund_value"/></td>
+                                            <td><span t-field="spouse.fund_value"/></td>
+                                        </tr> -->
+                                        <tr>
+                                            <td>Smoker Status</td>
+                                            <td><span t-field="partner.smokes_status"/></td>
+                                            <td><span t-field="spouse.smokes_status"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mb32 ml32">
+                                <a href="/my/personalfinancial?edit_mode=personal_detail" class="btn btn-primary">Edit</a>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" t-if="edit_mode == 'dependent'">
+                            <form action="/website_form/" method="post" data-force_action="dependent" class="s_website_attooh_form form-horizontal container-fluid mt32" data-editable-form="true" data-success_page="/my/personalfinancial">
+                                <div class="panel-heading">Dependent</div>
+                                <div class="container">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Relationship</th>
+                                                <th>Full Name</th>
+                                                <th>Date of Birth</th>
+                                                <th>Identity Type</th>
+                                                <th>Identity Number</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="o_hidden clone_tr">
+                                                <input name="id" type="hidden" class="form-control" value="0"/>
+                                                <td>
+
+                                                    <select name="relationship" class="form-control">
+                                                        <t t-foreach="partner._fields['relationship'].selection or []" t-as="type">
+                                                            <option t-att-value="type[0]">
+                                                                <t t-esc="type[1]"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </td>
+                                                <td><input class="form-control" name="name"/></td>
+                                                <td>
+                                                    <div class='col-md-12'>
+                                                        <input name="date_of_birth" type="text" class="form-control o_website_form_date"/>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <select name="id_type" class="form-control">
+                                                        <t t-foreach="partner._fields['id_type'].selection or []" t-as="type">
+                                                            <option t-att-value="type[0]">
+                                                                <t t-esc="type[1]"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <!-- <input class="form-control" name="id_type"/> -->
+
+                                                </td>
+                                                <td><input class="form-control" name="id_rsa"  pattern="\d*"  title="This must be a number"/></td>
+                                                <td>
+                                                    <a href="#" class="delete" data-id="0">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                            <t t-foreach="partner.dependent_ids" t-as="dependent">
+                                                <tr>
+                                                    <input name="id" type="hidden" disable="false" class="form-control" t-att-value="dependent.id"/>
+
+                                                    <td>
+                                                        <select name="relationship" class="form-control">
+                                                            <t t-foreach="partner._fields['relationship'].selection or []" t-as="type">
+                                                                <option t-att-value="type[0]" t-att-selected="dependent.relationship == type[0]">
+                                                                    <t t-esc="type[1]"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </td>
+                                                    <td><input class="form-control" name="name" t-att-value="dependent.name"/></td>
+                                                    <td>
+                                                        <div class='col-md-12'>
+                                                            <input name="date_of_birth" type="text" class="form-control o_website_form_date" t-att-value="dependent.date_of_birth"/>
+                                                        </div>
+                                                    </td>
+                                                    <td><input class="form-control" name="id_type" t-att-value="dependent.id_type"/></td>
+                                                    <td><input class="form-control" name="id_rsa" required="required" pattern="\d*"  title="This must be a number" t-att-value="dependent.id_rsa"/></td>
+                                                    <td>
+                                                        <a href="#" class="delete" t-att-data-id="dependent.id">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mb16 ml8">
+                                    <button href="/my/personalfinancial" class="btn btn-primary o_website_form_send">Save</button>
+                                    <button href="#" class="btn btn-primary add_line">Add</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="panel panel-default" t-if="edit_mode != 'dependent'">
+                            <div class="panel-heading">Dependent</div>
+                            <div class="container">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Relationship</th>
+                                            <th>Full Name</th>
+                                            <th>Date of Birth</th>
+                                            <th>Identity Type</th>
+                                            <th>Identity Number</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="partner.dependent_ids" t-as="dependent">
+                                            <tr>
+                                                <td><span t-field="dependent.relationship"/></td>
+                                                <td><span t-field="dependent.name"/></td>
+                                                <td><span t-field="dependent.date_of_birth"/></td>
+                                                <td><span t-field="dependent.id_type"/></td>
+                                                <td><span t-field="dependent.id_rsa"/></td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mb16 ml32">
+                                <a href="/my/personalfinancial?edit_mode=dependent" class="btn btn-primary">Edit</a>
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel panel-default" t-if="edit_mode != 'bugdet_income'">
+                            <div class="panel-heading">Personal Budget Income</div>
+                            <div class="container">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="partner.income_ids" t-as="income">
+                                            <tr>
+                                                <td><span t-field="income.income"/></td>
+                                                <td><span t-field="income.original_amount"/></td>
+                                            </tr>
+                                        </t>
+                                        <tr t-if="partner.income_ids">
+                                            <td>Total</td>
+                                            <td><t t-esc="sum(income.original_amount for income in partner.income_ids)"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mb16 ml32">
+                                <a href="/my/personalfinancial?edit_mode=bugdet_income" class="btn btn-primary">Edit</a>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default" t-if="edit_mode == 'bugdet_income'">
+                            <form action="/website_form/" method="post" data-force_action="bugdet_income" class="s_website_attooh_form form-horizontal container-fluid mt32" data-editable-form="true" data-success_page="/my/personalfinancial">
+                                <div class="panel-heading">Income</div>
+                                <div class="container">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Type</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tr class="o_hidden clone_tr">
+                                            <input name="id" type="hidden" class="form-control" value="0"/>
+                                            <td>
+                                                <select name="income" class="form-control">
+                                                    <t t-foreach="Income_obj._fields['income'].selection or []" t-as="type">
+                                                        <option t-att-value="type[0]">
+                                                            <t t-esc="type[1]"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </td>
+                                            <td><input pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"  class="form-control" name="original_amount"/></td>
+                                            <td>
+                                                <a href="#" class="delete" data-id="0">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tbody>
+                                            <t t-foreach="partner.income_ids" t-as="income_record">
+                                                <tr>
+                                                    <input name="id" type="hidden" disable="false" class="form-control" t-att-value="income_record.id"/>
+                                                    <td>
+                                                        <select name="income" class="form-control">
+                                                            <t t-foreach="Income_obj._fields['income'].selection or []" t-as="type">
+                                                                <option t-att-value="type[0]" t-att-selected="income_record.income == type[0]">
+                                                                    <t t-esc="type[1]"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </td>
+                                                    <td><input class="form-control" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places" name="original_amount" t-att-value="income_record.original_amount"/></td>
+                                                    <td>
+                                                        <a href="#" class="delete" t-att-data-id="income_record.id">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mb16 ml8">
+                                    <button href="/my/personalfinancial" class="btn btn-primary o_website_form_send">Save</button>
+                                    <button href="#" class="btn btn-primary add_line">Add</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="panel panel-default" t-if="edit_mode != 'bugdet_expense'">
+                            <div class="panel-heading">Personal Budget Expense</div>
+                            <div class="container">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="partner.expense_ids" t-as="expense">
+                                            <tr>
+                                                <td><span t-field="expense.expense"/></td>
+                                                <td><span t-field="expense.original_amount"/></td>
+                                            </tr>
+                                        </t>
+                                        <tr t-if="partner.expense_ids">
+                                            <td>Total</td>
+                                            <td><t t-esc="sum(expense.original_amount for expense in partner.expense_ids)"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mb16 ml32">
+                                <a href="/my/personalfinancial?edit_mode=bugdet_expense" class="btn btn-primary">Edit</a>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default" t-if="edit_mode == 'bugdet_expense'">
+                            <form action="/website_form/" method="post" data-force_action="bugdet_expense" class="s_website_attooh_form form-horizontal container-fluid mt32" data-editable-form="true" data-success_page="/my/personalfinancial">
+                                <div class="panel-heading">Personal Budget Expense</div>
+                                <div class="container">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Type</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tr class="o_hidden clone_tr">
+                                            <input name="id" type="hidden" class="form-control" value="0"/>
+                                            <td>
+                                                <select name="expense" class="form-control">
+                                                    <t t-foreach="Expense._fields['expense'].selection or []" t-as="type">
+                                                        <option t-att-value="type[0]">
+                                                            <t t-esc="type[1]"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </td>
+                                            <td><input pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"  class="form-control" name="original_amount"/></td>
+                                            <td>
+                                                <a href="#" class="delete" data-id="0">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tbody>
+                                            <t t-foreach="partner.expense_ids" t-as="expense_recored">
+                                                <tr>
+                                                    <input name="id" type="hidden" disable="false" class="form-control" t-att-value="expense_recored.id"/>
+                                                    <td>
+                                                        <select name="income" class="form-control">
+                                                            <t t-foreach="Expense._fields['expense'].selection or []" t-as="type">
+                                                                <option t-att-value="type[0]" t-att-selected="expense_recored.expense == type[0]">
+                                                                    <t t-esc="type[1]"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </td>
+                                                    <td><input class="form-control"  pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"  name="original_amount" t-att-value="expense_recored.original_amount"/></td>
+                                                    <td>
+                                                        <a href="#" class="delete" t-att-data-id="expense_recored.id">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mb16 ml8">
+                                    <button href="/my/personalfinancial" class="btn btn-primary o_website_form_send">Save</button>
+                                    <button href="#" class="btn btn-primary add_line">Add</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="my_beneficiaries" name="Personal and Financial Detail">
+            <t t-call="portal.portal_layout">
+                <div class="panel panel-default" t-if="edit_mode == 'dependent'">
+                    <div class="panel-heading">Add Beneficiaries</div>
+                    <form action="/website_form/" method="post" data-force_action="dependent" class="s_website_attooh_form form-horizontal container-fluid mt32" data-editable-form="true" data-success_page="/my/beneficiaries">
+                        <div class="container">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Relationship</th>
+                                        <th>Full Name</th>
+                                        <th>Date of Birth</th>
+                                        <th>Identity Type</th>
+                                        <th>Identity Number</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="o_hidden clone_tr">
+                                        <input name="id" type="hidden" class="form-control" value="0"/>
+                                        <td>
+
+                                            <select name="relationship" class="form-control">
+                                                <t t-foreach="partner._fields['relationship'].selection or []" t-as="type">
+                                                    <option t-att-value="type[0]">
+                                                        <t t-esc="type[1]"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </td>
+                                        <td><input class="form-control" name="name"/></td>
+                                        <td>
+                                            <div class='col-md-12'>
+                                                <input name="date_of_birth" type="text" class="form-control o_website_form_date"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select name="id_type" class="form-control">
+                                                <t t-foreach="partner._fields['id_type'].selection or []" t-as="type">
+                                                    <option t-att-value="type[0]">
+                                                        <t t-esc="type[1]"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                            <!-- <input class="form-control" name="id_type"/> -->
+
+                                        </td>
+                                        <td><input class="form-control" name="id_rsa"  pattern="\d*"  title="This must be a number"/></td>
+                                        <td>
+                                            <a href="#" class="delete" data-id="0">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <t t-foreach="partner.dependent_ids" t-as="dependent">
+                                        <tr>
+                                            <input name="id" type="hidden" disable="false" class="form-control" t-att-value="dependent.id"/>
+
+                                            <td>
+                                                <select name="relationship" class="form-control">
+                                                    <t t-foreach="partner._fields['relationship'].selection or []" t-as="type">
+                                                        <option t-att-value="type[0]" t-att-selected="dependent.relationship == type[0]">
+                                                            <t t-esc="type[1]"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </td>
+                                            <td><input class="form-control" name="name" t-att-value="dependent.name"/></td>
+                                            <td>
+                                                <div class='col-md-12'>
+                                                    <input name="date_of_birth" type="text" class="form-control o_website_form_date" t-att-value="dependent.date_of_birth"/>
+                                                </div>
+                                            </td>
+                                            <td><input class="form-control" name="id_type" t-att-value="dependent.id_type"/></td>
+                                            <td><input class="form-control" name="id_rsa" required="required" pattern="\d*"  title="This must be a number" t-att-value="dependent.id_rsa"/></td>
+                                            <td>
+                                                <a href="#" class="delete" t-att-data-id="dependent.id">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mb16 ml8">
+                            <button href="/my/personalfinancial" class="btn btn-primary o_website_form_send">Save</button>
+                            <button href="#" class="btn btn-primary add_line">Add</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel panel-default" t-if="edit_mode != 'dependent'">
+                    <div class="panel-heading">Add Beneficiaries</div>
+                    <div class="container">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Relationship</th>
+                                    <th>Full Name</th>
+                                    <th>Date of Birth</th>
+                                    <th>Identity Type</th>
+                                    <th>Identity Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="partner.dependent_ids" t-as="dependent">
+                                    <tr>
+                                        <td><span t-field="dependent.relationship"/></td>
+                                        <td><span t-field="dependent.name"/></td>
+                                        <td><span t-field="dependent.date_of_birth"/></td>
+                                        <td><span t-field="dependent.id_type"/></td>
+                                        <td><span t-field="dependent.id_rsa"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mb16 ml32">
+                        <a href="/my/beneficiaries?edit_mode=dependent" class="btn btn-primary">Edit</a>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="assets_frontend_attooh_assets" name="Website Form Assets Frontend" inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/crm_attooh/static/src/js/website_portal_form.js"/>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

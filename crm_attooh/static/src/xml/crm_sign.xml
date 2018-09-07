@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <t t-extend="website_sign.create_signature_request_dialog">
+        <t t-jquery="div.o_sign_request_signers" t-operation="append">
+            <div class="form-group">
+                <label for="o_sign_crm_lead_select" class="col-md-3">Oppotunity</label>
+                <div class="col-md-9">
+                    <input id="o_sign_crm_lead_select" placeholder="Search Lead...."/>
+                </div>
+            </div>
+        </t>
+    </t>
+    
+    <t t-extend="website_sign.signature_item">
+        <t t-jquery="t[t-if='readonly']" t-operation="append">
+            <div t-if="type == 'checkbox'" class="o_sign_signature_item o_sign" style="text-align:center"><input type="checkbox" class="o_sign_checkbox o_sign_checkbox" t-att-checked='value == "True" or None' disabled='1'/><t t-if="editMode" t-call="website_sign.signature_item_configuration"/></div>
+        </t>
+        <t t-jquery="t[t-if='!readonly']" t-operation="append">
+            <input t-if="type == 'checkbox'" data-checkbox="checkbox" value="" type="checkbox" class="o_sign_signature_item"/>
+        </t>
+    </t>
+    
+    
+</odoo>

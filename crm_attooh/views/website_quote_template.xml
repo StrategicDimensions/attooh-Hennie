@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="assets_backend_attooh" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+        <link rel="stylesheet" href="/crm_attooh/static/src/css/crm_attooh.css"/>
+        </xpath>
+    </template>
+    <template id="website_quote_template_inherit" inherit_id="website_quote.pricing" name="Website Quote Template">
+        <xpath expr="//section[@id='quote']" position="after">
+            <section>
+                <h1 class="page-header">Payments</h1>
+                <div>
+                    <span>
+                        <span>Payment on Acceptance:
+                        </span>
+                        <strong t-field="quotation.payment_on_acceptance"/>
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        <span>Payment on Completion:
+                        </span>
+                        <strong t-field="quotation.payment_on_completion"/>
+                    </span>
+                </div>
+            </section>
+        </xpath>
+    </template>
+
+    <template id="website_quote_so_inherit" inherit_id="website_quote.so_quotation" name="Website So Tempalte">
+        <xpath expr="//div[@id='modalaccept']" position="replace">
+            <div class="modal fade" id="modalaccept" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" t-if="not quotation.require_payment and not need_payment">
+                    <form id="accept" method="POST" t-att-data-order-id="quotation.id" t-att-data-token="quotation.access_token" class="js_accept_json modal-content js_website_submit_form">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+                            <h4 class="modal-title">Validate Order</h4>
+                        </div>
+                        <div class="modal-body" id="sign-dialog">
+                            <p>
+                                <span>I agree that by signing this proposal, I accept it on the behalf of
+                                </span><b t-field="quotation.partner_id.commercial_partner_id"/>
+                                <span>, for an amount of
+                                </span>
+                                <b data-id="total_amount" t-field="quotation.payment_on_acceptance" t-options='{"widget": "monetary", "display_currency": quotation.pricelist_id.currency_id}'/>
+                                <span>with payment terms:
+                                </span><b t-field="quotation.payment_term_id"/>.
+                            </p>
+                            <t t-call="portal.portal_signature">
+                                <t t-set="object" t-value="quotation"/>
+                                <t t-set="partner_name" t-value="quotation.partner_id.name"/>
+                                <t t-set="callUrl" t-value="'/my/quotes/accept'"/>
+                                <t t-set="accessToken" t-value="quotation.access_token"/>
+                            </t>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-dialog modal-content" t-if="quotation.require_payment or need_payment">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+                        <h4 class="modal-title">Validate Order</h4>
+                    </div>
+                    <div class="modal-body" id="sign-dialog">
+                        <p>
+                            <span>I agree that by paying this proposal, I accept it on the behalf of
+                            </span><b t-field="quotation.partner_id.commercial_partner_id"/>
+                            <span>, for an amount of
+                            </span>
+                            <b data-id="total_amount" t-field="quotation.payment_on_acceptance" t-options='{"widget": "monetary", "display_currency": quotation.pricelist_id.currency_id}'/>
+                            <span>with payment terms:
+                            </span><b t-field="quotation.payment_term_id"/>.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <div t-if="pms or s2s_acquirers or form_acquirers" id="payment_method" class="text-left col-md-13">
+                            <h3 class="mb24">Pay with</h3>
+                            <t t-call="payment.payment_tokens_list">
+                                <t t-set="mode" t-value="'payment'"/>
+                                <t t-set="submit_txt" t-value="'Pay &amp; Confirm'"/>
+                                <t t-set="icon_class" t-value="'fa-lock'"/>
+                                <t t-set="form_action" t-value="'/quote/' + str(quotation.id) + '/transaction/token'"/>
+                                <t t-set="prepare_tx_url" t-value="'/quote/' + str(quotation.id) + '/transaction/'"/>
+                                <t t-set="access_token" t-value="quotation.access_token"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

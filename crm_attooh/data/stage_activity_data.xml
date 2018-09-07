@@ -1,0 +1,259 @@
+<odoo noupdate="1">
+
+    <record id="stage_activity_1" model="stage.activity">
+        <field name="name">Qualify Leads</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_1"></field>
+    </record>
+    <record id="stage_activity_2" model="stage.activity">
+        <field name="name">Schedule Appointment</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_2"></field>
+    </record>
+    <record id="stage_activity_3" model="stage.activity">
+        <field name="name">Provide Client with a brokers disclosure</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_3"></field>
+    </record>
+    <record id="stage_activity_4" model="stage.activity">
+        <field name="name">Capture client profile</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_4"></field>
+    </record>
+    <record id="stage_activity_5" model="stage.activity">
+        <field name="name">Capture and analyse all existing information</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_5"></field>
+    </record>
+    <record id="stage_activity_6" model="stage.activity">
+        <field name="name">Compile a recommendation for the client after assessment</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_6"></field>
+    </record>
+    <record id="stage_activity_7" model="stage.activity">
+        <field name="name">Forward FNA to financial advisor assistant</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_7"></field>
+    </record>
+    <record id="stage_activity_8" model="stage.activity">
+        <field name="name">Provide client with multiple written recommendations and proposals</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">0</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_8"></field>
+    </record>
+
+
+    <record id="stage_activity_12" model="stage.activity">
+        <field name="name">Attain Client Needs &amp; Preferences</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_3"></field>
+    </record>
+    <record id="stage_activity_13" model="stage.activity">
+        <field name="name">Request relevant client info from 3rd party</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_4"></field>
+    </record>
+    <record id="stage_activity_14" model="stage.activity">
+        <field name="name">Compile report on client needs</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_5"></field>
+    </record>
+    <record id="stage_activity_15" model="stage.activity">
+        <field name="name">Compile ROA (Note: Compliance risk)</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_6"></field>
+    </record>
+    <record id="stage_activity_16" model="stage.activity">
+        <field name="name">Insert ROA</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_7"></field>
+    </record>
+    <record id="stage_activity_17" model="stage.activity">
+        <field name="name">Discuss and assess proposals with the client</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">2</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_8"></field>
+    </record>
+
+    <record id="stage_activity_18" model="stage.activity">
+        <field name="name">Check client compatibility</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_3"></field>
+    </record>
+    <record id="stage_activity_19" model="stage.activity">
+        <field name="name">Send "thank you letter to client along with action points</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_4"></field>
+    </record>
+    <record id="stage_activity_20" model="stage.activity">
+        <field name="name">Generate quotes from client needs from relevant companies</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_5"></field>
+    </record>
+    <record id="stage_activity_22" model="stage.activity">
+        <field name="name">Consolidate Document</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_7"></field>
+    </record>
+    <record id="stage_activity_23" model="stage.activity">
+        <field name="name">Amend changes if required and process onsite</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">4</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_8"></field>
+    </record>
+
+    <record id="stage_activity_24" model="stage.activity">
+        <field name="name">Obtain signed authorisation letter (astute) if not already obtained</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_3"></field>
+    </record>
+    <record id="stage_activity_26" model="stage.activity">
+        <field name="name">Compile comparison of multiple quotes and presentations</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_5"></field>
+    </record>
+    <record id="stage_activity_28" model="stage.activity">
+        <field name="name">Close the deal and apply for product</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">6</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_6"></field>
+    </record>
+
+    <record id="stage_activity_29" model="stage.activity">
+        <field name="name">Fill in FNA interview form</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">8</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_3"></field>
+    </record>
+    <record id="stage_activity_30" model="stage.activity">
+        <field name="name">Assessment of multiple quote and preferred quote</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">8</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_5"></field>
+    </record>
+    <record id="stage_activity_31" model="stage.activity">
+        <field name="name">Sign all relevant compliance documentation</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">8</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_6"></field>
+    </record>
+
+    <record id="stage_activity_32" model="stage.activity">
+        <field name="name">Receive relevant info and documentation from client</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">10</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_3"></field>
+    </record>
+    <record id="stage_activity_33" model="stage.activity">
+        <field name="name">Complete compliance documentation - e.g receive FICA info</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">10</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_5"></field>
+    </record>
+
+    <record id="stage_activity_34" model="stage.activity">
+        <field name="name">Take minutes and send to client</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">12</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_3"></field>
+    </record>
+    <record id="stage_activity_35" model="stage.activity">
+        <field name="name">Schedule 2nd appoitnmen</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">12</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_5"></field>
+    </record>
+
+    <record id="stage_activity_36" model="stage.activity">
+        <field name="name">Inform assistant of required client information</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">14</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_3"></field>
+    </record>
+    <record id="stage_activity_37" model="stage.activity">
+        <field name="name">Convey proposed solution to client for approval</field>
+        <field name="assign_to_owner" eval="True"></field>
+        <field name="activity_date">14</field>
+        <field name="activity_type_id" ref="mail.mail_activity_data_todo"></field>
+        <field name="team_ids" eval="[(6,0,[ref('crm_team_attooh_1'), ref('crm_team_attooh_2'), ref('crm_team_attooh_3'), ref('crm_team_attooh_4')])]"/>
+        <field name="crm_stage_id" ref="crm_attooh.crm_stage_attooh_5"></field>
+    </record>
+</odoo>

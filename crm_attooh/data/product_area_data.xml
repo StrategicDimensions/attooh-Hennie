@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo noupdate="0">
+
+        <record id="product_short_term" model="product.area">
+            <field name="name">Short Term</field>
+        </record>
+
+        <record id="product_area_health" model="product.area">
+            <field name="name">Health</field>
+        </record>
+
+        <record id="product_area_investments" model="product.area">
+            <field name="name">Investments</field>
+        </record>
+
+         <record id="product_area_risk" model="product.area">
+            <field name="name">Risk</field>
+        </record>
+
+    </odoo>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_attachment_view_kanban_inherit" model="ir.ui.view">
+        <field name="name">ir.attachment.kanban.inherit</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="mail.view_document_file_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="replace">
+                <kanban>
+                    <field name="id"/>
+                    <field name="mimetype"/>
+                    <field name="type"/>
+                    <field name="datas_fname"/>
+                    <field name="name"/>
+                    <field name="create_uid"/>
+                    <field name="document_available"/>
+                    <field name="document_type"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="oe_kanban_vignette">
+                                    <div class="oe_attachment">
+                                        <div class="oe_name">
+                                            <field name="name"/>
+                                        </div>
+                                        <div t-if="record.type.raw_value == 'binary'">
+                                            <a t-attf-href="/web/content/#{record.id.raw_value}?download=1">
+                                                <t t-set="webimage" t-value="new RegExp('image.*(gif|jpeg|jpg|png)').test(record.mimetype.value)"/>
+                                                <div t-if="!webimage" class="o_image" t-att-data-mimetype="record.mimetype.value"/>
+                                                <div t-if="webimage" class="o_attachment_image">
+                                                    <img t-attf-src="/web/image/#{record.id.raw_value}?download=1"/>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="o_checkbox">
+                                                    <input type="checkbox" disabled="disabled"  t-att-checked="record.document_available.raw_value ? 'checked' : undefined"/><span/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <span t-if="record.document_type.value">
+                                                    <t t-esc="record.document_type.value"/>
+                                                </span>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="oe_kanban_bottom_right">
+                                                    <img t-att-src="kanban_image('res.users', 'image_small', record.create_uid.raw_value)" t-att-title="record.create_uid.value" width="24" height="24" class="oe_kanban_avatar pull-right"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="ir_attachment_view_search_attachment" model="ir.ui.view">
+        <field name="name">ir.attachment.search.attachment</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+                <filter name="group_document_type" string="Document Type"  context="{'group_by':'document_type'}"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="base.action_attachment" model="ir.actions.act_window">
+        <field name="context">{'search_default_group_document_type': 1}</field>
+    </record>
+
+</odoo>

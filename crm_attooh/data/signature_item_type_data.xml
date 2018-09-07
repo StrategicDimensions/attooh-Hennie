@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="signature_item_type_mobile" model="signature.item.type">
+        <field name="name">Mobile</field>
+        <field name="type">text</field>
+        <field name="auto_field">mobile</field>
+        <field name="default_width" type="float">0.150</field>
+        <field name="default_height" type="float">0.015</field>
+        <field name="placeholder">Your Mobile</field>
+    </record>
+
+    <record id="signature_item_type_id_number" model="signature.item.type">
+        <field name="name">ID Number</field>
+        <field name="type">text</field>
+        <field name="auto_field">rsa_id</field>
+        <field name="default_width" type="float">0.150</field>
+        <field name="default_height" type="float">0.015</field>
+        <field name="placeholder">Your ID/Passport</field>
+    </record>
+
+    <record id="signature_item_type_street" model="signature.item.type">
+        <field name="name">Street</field>
+        <field name="type">text</field>
+        <field name="auto_field">street</field>
+        <field name="default_width" type="float">0.150</field>
+        <field name="default_height" type="float">0.015</field>
+        <field name="placeholder">Your Street</field>
+    </record>
+
+    <record id="signature_item_type_street2" model="signature.item.type">
+        <field name="name">Street 2</field>
+        <field name="type">text</field>
+        <field name="auto_field">street2</field>
+        <field name="default_width" type="float">0.150</field>
+        <field name="default_height" type="float">0.015</field>
+        <field name="placeholder">Your Street 2</field>
+    </record>
+
+    <record id="signature_item_type_city" model="signature.item.type">
+        <field name="name">City</field>
+        <field name="type">text</field>
+        <field name="auto_field">city</field>
+        <field name="default_width" type="float">0.150</field>
+        <field name="default_height" type="float">0.015</field>
+        <field name="placeholder">Your City</field>
+    </record>
+
+    <record id="signature_item_type_province" model="signature.item.type">
+        <field name="name">Province</field>
+        <field name="type">text</field>
+        <field name="auto_field">state_id.name</field>
+        <field name="default_width" type="float">0.150</field>
+        <field name="default_height" type="float">0.015</field>
+        <field name="placeholder">Your Province</field>
+    </record>
+
+    <record id="signature_item_type_postal_code" model="signature.item.type">
+        <field name="name">Postal Code</field>
+        <field name="type">text</field>
+        <field name="auto_field">zip</field>
+        <field name="default_width" type="float">0.150</field>
+        <field name="default_height" type="float">0.015</field>
+        <field name="placeholder">Your Postal Code</field>
+    </record>
+
+    <record id="signature_item_type_country" model="signature.item.type">
+        <field name="name">Country</field>
+        <field name="type">text</field>
+        <field name="auto_field">country_id.name</field>
+        <field name="default_width" type="float">0.150</field>
+        <field name="default_height" type="float">0.015</field>
+        <field name="placeholder">Your Country</field>
+    </record>
+    
+    <record model="signature.item.type" id="signature_item_type_checkbox">
+        <field name="name">Checkbox</field>
+        <field name="type">checkbox</field>
+        <field name='tip'>fill in</field>
+        <field name="default_width" type="float">0.037</field>
+        <field name="default_height" type="float">0.025</field>
+    </record>
+
+</odoo>

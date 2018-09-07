@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sms_account_default_account" model="sms.account">
+        <field name="name">SMS Account</field>
+        <field name="account_gateway_id" ref="sms_clickatell"/>
+        <field name="clicKatell_username">account_name</field>
+        <field name="clicKatell_password">account_password</field>
+        <field name="clicKatell_api">account_api</field>
+    </record>
+
+    <record id="sms_number_default" model="sms.number">
+        <field name="name">SMS Account</field>
+        <field name="account_id" ref="sms_account_default_account"/>
+        <field name="mobile_number">0000000000</field>
+    </record>
+
+    <record id="sms_template_default" model="sms.template">
+        <field name="name">Send SMS to Customer</field>
+        <field name="model_id" search="[('model', '=', 'res.partner')]"/>
+        <field name="from_mobile_verified_id" ref="sms_number_default"/>
+        <field name="from_mobile">0000000000</field>
+        <field name="template_body">Hello ${object.name}</field>
+    </record>
+
+    <record id="sms_template_reset_password" model="sms.template">
+        <field name="name">Portal Password Reset</field>
+        <field name="model_id" search="[('model', '=', 'res.users')]"/>
+        <field name="from_mobile_verified_id" ref="sms_number_default"/>
+        <field name="from_mobile">0000000000</field>
+        <field name="template_body">Dear ${object.name}, A password reset was requested for your Portal. Change your password by following this link which is valid for 24 hrs:
+${object.partner_id.signup_url}</field>
+    </record>
+
+</odoo>
