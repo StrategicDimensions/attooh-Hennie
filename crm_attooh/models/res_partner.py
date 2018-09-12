@@ -28,6 +28,7 @@ class CRM(models.Model):
     surname = fields.Char('Surname')
     initials = fields.Char('Initials')
     second_name = fields.Char('Second Name')
+    home_phone = fields.Char('Home Phone')
     date_of_birth = fields.Date('Date of Birth')
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string="Gender")
     marrige_date = fields.Date('Marriage Date')
@@ -148,8 +149,11 @@ class CRM(models.Model):
     qualification = fields.Selection([
         ('no_matric', 'No Matric'),
         ('matric', 'Matric'),
-        ('3_y_d', '3 Year Dipl/Degr'),
-        ('4_y_d', '4 Year Dipl/Degr'),
+        ('3_y_diploma', '3 Year Diploma'),
+        ('4_y_diploma', '4 Year Diploma'),
+        ('3_y_d', '3 Year Degree'),
+        ('4_y_d', '4 Year Degree'),
+        ('professional', 'Professional'),
     ], 'Qualification')
     gross_month_salary = fields.Float('Gross Monthly Salary')
     employer = fields.Many2one('res.partner', string='Employer')
@@ -203,9 +207,9 @@ class CRM(models.Model):
     last_prev_name = fields.Char('Last Previous Name')
     tax_office = fields.Char('Tax Office')
     income_tax_number = fields.Char('Income Tax Number')
-    client_adviser_id = fields.Many2one('res.users', 'Client Adviser')
-    admin_id = fields.Many2one('res.users', 'Administrator')
-    portfolio_analyst_id = fields.Many2one('res.users', 'Portfolio Analyst')
+    client_adviser_id = fields.Many2one('res.users', 'Client Adviser', domain=[('share', '=', False)])
+    admin_id = fields.Many2one('res.users', 'Administrator', domain=[('share', '=', False)])
+    portfolio_analyst_id = fields.Many2one('res.users', 'Portfolio Analyst', domain=[('share', '=', False)])
     entity_status = fields.Many2many('entity.status', 'res_partner_entity_rel', 'partner_id', 'entity_id', string='Entity Status')
     category = fields.Selection([
         ('diamond_first', 'Diamond / First'),
@@ -288,6 +292,22 @@ class CRM(models.Model):
     attachment_count = fields.Integer(compute="_compute_attachment_count", string="Attachments")
 
     spouse_id = fields.Many2one('res.partner', 'Spouse')
+
+    @api.model
+    def create(self, vals):
+        res = super(CRM, self).create(vals)
+        if vals.get('spouse_id'):
+            spouse = self.browse(vals.get('spouse_id'))
+            spouse.spouse_id = res.id
+        return res
+
+    @api.multi
+    def write(self, vals):
+        if vals.get('spouse_id') and not self.env.context.get('no_write'):
+            spouse = self.browse(vals.get('spouse_id'))
+            for record in self:
+                spouse.with_context(no_write=True).write({'spouse_id': record.id})
+        return super(CRM, self).write(vals)
 
     def _compute_attachment_count(self):
         Attachment = self.env['ir.attachment']
@@ -378,6 +398,11 @@ class CRM(models.Model):
                 self.gender = 'female'
             else:
                 self.gender = 'male'
+
+            if month < 10:
+                month = '0%s' % (month)
+            if day < 10:
+                day = '0%s' % (day)
             self.date_of_birth = '%s-%s-%s' % (year, month, day)
             if resident_status == 1:
                 self.resident_status = 'permanent'

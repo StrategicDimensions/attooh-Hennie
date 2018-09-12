@@ -500,16 +500,6 @@
                                                 <td><input class="form-control" name="spouse_gross_month_salary" t-att-value="spouse.gross_month_salary" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"/></td>
                                             </tr>
                                             <tr>
-                                                <td>Gross Retierment Fund</td>
-                                                <td><input type="checkbox" class="form-control" t-att-checked="'checked' if partner.gross_retirement_fund else None" name="gross_retirement_fund" t-att-value="partner.gross_retirement_fund"/></td>
-                                                <td><input type="checkbox" class="form-control" t-att-checked="'checked' if spouse.gross_retirement_fund else None" name="spouse_gross_retirement_fund" t-att-value="spouse.gross_retirement_fund"/></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Fund Value</td>
-                                                <td><input class="form-control" name="fund_value" t-att-value="partner.fund_value" required="required" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"/></td>
-                                                <td><input class="form-control" name="spouse_fund_value" t-att-value="spouse.fund_value" pattern="[0-9]+(\.[0-9]{0,2})?%?" title="This must be a number with up to 2 decimal places"/></td>
-                                            </tr>
-                                            <tr>
                                                 <td>Smoker Status</td>
                                                 <td>
                                                     <input type="radio" name="smokes_status" value="yes" t-att-checked="partner.smokes_status == 'yes'">YES</input>
@@ -651,11 +641,6 @@
                                                 <input type="checkbox" disabled="disabled" t-att-checked="'checked' if spouse.gross_retirement_fund else None"/>
                                             </td>
                                         </tr>
-                                        <!-- <tr>
-                                            <td>Fund Value</td>
-                                            <td><span t-field="partner.fund_value"/></td>
-                                            <td><span t-field="spouse.fund_value"/></td>
-                                        </tr> -->
                                         <tr>
                                             <td>Smoker Status</td>
                                             <td><span t-field="partner.smokes_status"/></td>

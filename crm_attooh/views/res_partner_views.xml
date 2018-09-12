@@ -24,12 +24,13 @@
                                    attrs="{'invisible': [('is_company', '=', True)]}"/>
                             <field name="preferred_name" attrs="{'invisible': [('is_company', '=', True)]}"/>
                             <field name="first_name" attrs="{'invisible': [('is_company', '=', True)]}"/>
-                            <field name="second_name"/>
-                            <field name="third_name"/>
+                            <field name="second_name" attrs="{'invisible': [('is_company', '=', True)]}"/>
+                            <field name="third_name" attrs="{'invisible': [('is_company', '=', True)]}"/>
                             <field name="surname" attrs="{'invisible': [('is_company', '=', True)]}"/>
                             <field name="initials" attrs="{'invisible': [('is_company', '=', True)]}"/>
-                            <field name="last_prev_name"/>
-                            <field name="mobile" widget="phone"/>
+                            <field name="last_prev_name" attrs="{'invisible': [('is_company', '=', True)]}"/>
+                            <field name="trade_name" attrs="{'invisible': [('is_company', '=', False)]}"/>
+                            <field name="mobile" widget="phone" placeholder="E.164 format e.g +27 79 880 2470"/>
                             <field name="type" invisible="1" attrs="{'invisible': [('parent_id','=', False)]}" groups="base.group_no_one"/>
                             <label for="street" string="Address"/>
                             <div class="o_address_format">
@@ -51,7 +52,7 @@
                                     attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
                             </div>
                             <field name="reg_number"  attrs="{'invisible': [('is_company', '=', False)]}"/>
-                            <field name="vat"  attrs="{'invisible': [('is_company', '=', False)]}" placeholder="e.g. BE0477472701"/>
+                            <field name="vat"  attrs="{'invisible': [('is_company', '=', False)]}" placeholder="e.g. 4534567890"/>
                             <field name="tax_office"/>
                             <field name="income_tax_number"/>
                             <field name="category_id" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="Tags..."/>
@@ -61,19 +62,19 @@
 
                         </group>
                         <group>
-                            <field name="id_type"/>
-                            <field name="id_rsa"/>
+                            <field name="company" attrs="{'invisible': [('is_company', '=', False)]}"/>
+                            <field name="id_type" attrs="{'invisible': [('is_company', '=', True)]}"/>
+                            <field name="id_rsa" attrs="{'invisible': [('is_company', '=', True)]}"/>
                             <field name="phone" widget="phone" string="Work Phone"/>
+                            <field name="home_phone" widget="phone" attrs="{'invisible': [('is_company', '=', True)]}"/>
                             <field name="email" widget="email" context="{'gravatar_image': True}" attrs="{'required': [('user_ids','!=', [])]}"/>
                             <field name="lang"/>
-                            <field name="qualification"/>
-                            <field name="occupation"/>
-                            <field name="trade_name" attrs="{'invisible': [('is_company', '=', False)]}"/>
+                            <field name="qualification" attrs="{'invisible': [('is_company', '=', True)]}"/>
+                            <field name="occupation" attrs="{'invisible': [('is_company', '=', True)]}"/>
                             <field name="function" placeholder="e.g. Sales Director"
                                 attrs="{'invisible': [('is_company','=', True)]}"/>
-                            <field name="company" attrs="{'invisible': [('is_company', '=', False)]}"/>
                             <field name="user_ids" invisible="1"/>
-                            <field name="website" widget="url" placeholder="e.g. www.odoo.com"/>
+                            <field name="website" widget="url" placeholder="e.g. www.attooh.co.za"/>
                             <field name="entity_status" widget="many2many_tags" options="{'no_create_edit': True}"/>
                             <field name="category"/>
                             <field name="services" widget="many2many_tags" options="{'no_create_edit': True}"/>

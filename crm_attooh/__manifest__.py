@@ -2,11 +2,9 @@
 {
     'name': "crm_attooh",
 
-    'summary': """
-        Customimsation for attooh""",
+    'summary': """Customimsation for attooh""",
 
     'description': """
-        ...
     """,
 
     'author': "Strategic Dimensions",
@@ -16,7 +14,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '2.3',
+    'version': '2.6',
 
     # any module necessary for this one to work correctly
     'depends': ['crm', 'sale_management', 'website_sign', 'website_quote',
@@ -57,6 +55,7 @@
         'views/crm_reporting_view.xml',
         'views/res_users.xml',
         'views/crm_reporting_activity.xml',
+        'views/mail_activity_views.xml',
     ],
     'qweb': ['static/src/xml/*.xml'],
     'post_init_hook':'post_init_check'
